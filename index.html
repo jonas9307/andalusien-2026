@@ -140,17 +140,23 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .theme-toggle-btn {
       background: var(--surface-subtle);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 6px 12px;
+      padding: 6px 10px;
       border-radius: 20px;
       font-size: 0.8rem;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .theme-toggle-btn:hover {
+      border-color: var(--primary);
     }
 
     .nav-tabs {
@@ -561,6 +567,8 @@
       <p id="tripDates">Málaga, Sevilla & Córdoba • 8–15 Okt</p>
     </div>
     <div class="header-actions">
+      <!-- UPPDATERA-KNAPPEN SOM HÄMTAR SENASTE FRÅN MOLNET UTAN CACHE -->
+      <button class="theme-toggle-btn" id="refreshBtn" onclick="forceRefreshData()" title="Hämta senaste versionen från GitHub">🔄 Uppdatera</button>
       <button class="theme-toggle-btn" onclick="openGithubModal()" title="GitHub Synkinställningar">☁️ Synk</button>
       <button class="theme-toggle-btn" onclick="cycleTheme()" id="themeBtn">🌓 Auto</button>
     </div>
@@ -665,6 +673,7 @@
     let tripData = null;
     let leafletMap = null;
     let hasUnsavedChanges = false;
+    const STORAGE_KEY = "andalusien_trip_data_v10";
 
     const DEFAULT_DOCS = [
       { id: "doc-1", title: "Tåg: Sevilla ➔ Málaga T/R", filename: "sevilla-malaga-train-tur-och-retur.pdf", color: "#0284c7" },
@@ -681,7 +690,7 @@
       food:        { label: "Mat & Dryck", icon: "🥘", class: "cat-food" },
       sight:       { label: "Sevärdhet", icon: "🏛", class: "cat-sight" },
       hotel:       { label: "Hotell", icon: "🏨", class: "cat-hotel" },
-      chill:       { label: "Relax", icon: "☀️", class: "cat-chill" },
+      chill:       { label: "Relax", icon: "☀️️", class: "cat-chill" },
       placeholder: { label: "Öppet", icon: "⏳", class: "cat-placeholder" }
     };
 
@@ -690,7 +699,7 @@
       document.documentElement.setAttribute("data-theme", theme);
       const btn = document.getElementById("themeBtn");
       if (theme === "dark") btn.innerHTML = "🌙 Mörkt";
-      else if (theme === "light") btn.innerHTML = "☀️ Ljust";
+      else if (theme === "light") btn.innerHTML = "☀️️ Ljust";
       else btn.innerHTML = "🌓 Auto";
       localStorage.setItem("theme_mode", theme);
     }
@@ -739,10 +748,44 @@
       day.items.sort((a, b) => getTimeWeight(a.time) - getTimeWeight(b.time));
     }
 
-    // ÄNDRINGSHANTERING & MOLNSYNC (METOD 3)
+    // TVINGAD HÄMTNING AV SENASTE DATA FRÅN GITHUB / SERVERN (Kringgår all cache)
+    async function forceRefreshData() {
+      const btn = document.getElementById("refreshBtn");
+      if (btn) btn.innerText = "⏳ Hämtar...";
+
+      try {
+        // Tidsstämpel + no-store tvingar webbläsaren och GitHub Pages att skicka helt färsk data
+        const res = await fetch("data.json?t=" + Date.now(), {
+          cache: "no-store",
+          headers: { "Cache-Control": "no-cache" }
+        });
+
+        if (!res.ok) throw new Error("Kunde inte nå data.json");
+
+        tripData = await res.json();
+        tripData.days.forEach(sortDayItems);
+
+        // Skriver över mobilens gamla lokala minne
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tripData));
+        hasUnsavedChanges = false;
+        document.getElementById("saveBanner").classList.remove("active");
+
+        renderApp();
+
+        if (btn) {
+          btn.innerText = "✅ Uppdaterad!";
+          setTimeout(() => { btn.innerText = "🔄 Uppdatera"; }, 2000);
+        }
+      } catch (err) {
+        alert("Kunde inte hämta senaste versionen: " + err.message);
+        if (btn) btn.innerText = "🔄 Uppdatera";
+      }
+    }
+
+    // ÄNDRINGSHANTERING & MOLNSYNC
     function markUnsaved() {
       hasUnsavedChanges = true;
-      localStorage.setItem("andalusien_trip_data_v9", JSON.stringify(tripData));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tripData));
       const banner = document.getElementById("saveBanner");
       const text = document.getElementById("saveBannerText");
       const btn = document.getElementById("saveBtnAction");
@@ -804,7 +847,6 @@
       btn.innerText = "Sparar...";
 
       try {
-        // 1. Hämta befintlig SHA för data.json
         const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/data.json`;
         const getRes = await fetch(getUrl, {
           headers: {
@@ -820,11 +862,9 @@
         const getData = await getRes.json();
         const currentSha = getData.sha;
 
-        // 2. Skapa uppdaterat JSON-innehåll och koda till Base64
         const contentStr = JSON.stringify(tripData, null, 2);
         const base64Content = utf8ToBase64(contentStr);
 
-        // 3. Skicka PUT-request för att skriva över data.json på GitHub
         const putRes = await fetch(getUrl, {
           method: "PUT",
           headers: {
@@ -861,8 +901,6 @@
 
     async function loadData() {
       applyTheme(getStoredTheme());
-      
-      const STORAGE_KEY = "andalusien_trip_data_v9";
       const localSaved = localStorage.getItem(STORAGE_KEY);
 
       if (localSaved) {
@@ -870,15 +908,7 @@
         tripData.days.forEach(sortDayItems);
         renderApp();
       } else {
-        try {
-          const res = await fetch("data.json");
-          tripData = await res.json();
-          tripData.days.forEach(sortDayItems);
-          renderApp();
-        } catch (err) {
-          document.getElementById("scheduleContainer").innerHTML = 
-            "<p style='padding:20px; color:var(--text-muted);'>Kunde inte ladda <code>data.json</code> automatiskt.<br>Starta servern från terminalen med <code>python3 -m http.server 8000</code>.</p>";
-        }
+        await forceRefreshData();
       }
     }
 
@@ -1094,7 +1124,6 @@
       });
     }
 
-    // DOKUMENT & BILJETTER
     function getFileHref(filename) {
       let f = filename.trim();
       if (f.startsWith('http://') || f.startsWith('https://')) return f;

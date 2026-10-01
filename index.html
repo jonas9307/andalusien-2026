@@ -28,7 +28,7 @@
       --city-cordoba: #16a34a;
       --city-cordoba-bg: #dcfce7;
 
-      /* Kategorier */
+      /* Aktivitetskategorier */
       --cat-transport-bg: #dbeafe; --cat-transport-text: #1e40af;
       --cat-food-bg: #ffedd5; --cat-food-text: #9a3412;
       --cat-sight-bg: #f3e8ff; --cat-sight-text: #6b21a8;
@@ -275,7 +275,6 @@
     .item-notes { font-size: 0.78rem; color: var(--text-muted); outline: none; min-height: 1.1em; }
     .item-notes:empty::before { content: "+ Anteckning..."; opacity: 0.45; font-style: italic; cursor: text; }
 
-    /* Adressfält med Maps-knapp */
     .item-address-row {
       display: flex;
       align-items: center;
@@ -283,11 +282,7 @@
       flex-wrap: wrap;
       font-size: 0.75rem;
     }
-    .item-address {
-      color: var(--text-muted);
-      outline: none;
-      min-height: 1.1em;
-    }
+    .item-address { color: var(--text-muted); outline: none; min-height: 1.1em; }
     .item-address:empty::before { content: "+ Lägg till adress..."; opacity: 0.45; font-style: italic; cursor: text; }
     .address-maps-btn {
       color: #ea4335;
@@ -298,18 +293,9 @@
       gap: 3px;
     }
 
-    /* Länkfält */
-    .item-link-row {
-      font-size: 0.75rem;
-    }
-    .item-link {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-    .item-link-edit {
-      color: var(--text-muted);
-      outline: none;
-    }
+    .item-link-row { font-size: 0.75rem; }
+    .item-link { color: var(--accent); text-decoration: underline; }
+    .item-link-edit { color: var(--text-muted); outline: none; }
     .item-link-edit:empty::before { content: "+ Lägg till länk..."; opacity: 0.45; font-style: italic; cursor: text; }
 
     .item-delete-btn {
@@ -388,24 +374,115 @@
     }
     .neighborhood-card h4 { font-size: 1rem; display: flex; justify-content: space-between; align-items: center; }
 
-    /* Dokumentbank */
-    .doc-upload-box {
+    /* DOKUMENT & BILJETTER (GITHUB /files/) */
+    .doc-add-panel {
       background: var(--surface);
-      border: 2px dashed var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px;
-      text-align: center;
+      padding: 14px;
       margin-bottom: 1.25rem;
     }
-    .doc-row {
+    .doc-add-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto auto;
+      gap: 8px;
+      align-items: center;
+    }
+    @media (max-width: 600px) {
+      .doc-add-form {
+        grid-template-columns: 1fr;
+      }
+    }
+    .doc-add-form input[type="text"] {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      width: 100%;
+    }
+    .color-picker-input {
+      width: 44px;
+      height: 36px;
+      padding: 2px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      background: var(--surface);
+    }
+
+    .doc-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: var(--surface);
       border: 1px solid var(--border);
+      border-left: 6px solid var(--doc-color, var(--primary));
       border-radius: var(--radius);
-      padding: 10px 14px;
-      margin-bottom: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      gap: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: transform 0.1s;
+    }
+    .doc-card-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+    .doc-color-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .doc-color-badge input[type="color"] {
+      width: 24px;
+      height: 24px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      background: transparent;
+      padding: 0;
+    }
+    .doc-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .doc-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+      outline: none;
+    }
+    .doc-filename {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+    .doc-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .doc-open-btn {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+    .doc-open-btn:hover {
+      border-color: var(--accent);
     }
   </style>
 </head>
@@ -436,7 +513,7 @@
     <!-- FLIK 2: KARTA & MAT -->
     <div id="tab-restaurants" class="tab-pane">
       <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:12px; margin-bottom:1rem;">
-        <h3 style="font-size:0.95rem; margin-bottom:4px;">🗺️ Interaktiv Restaurang- & Platskarta</h3>
+        <h3 style="font-size:0.95rem; margin-bottom:4px;">🗺️️ Interaktiv Restaurang- & Platskarta</h3>
         <p style="font-size:0.8rem; color:var(--text-muted);">
           Kartan visar alla restauranger och Hotel Monte Triana. Klicka på en markör för att öppna den direkt i Google Maps.
         </p>
@@ -456,18 +533,22 @@
       <div id="neighborhoodsContainer"></div>
     </div>
 
-    <!-- FLIK 4: BILJETTER & DOKUMENT -->
+    <!-- FLIK 4: BILJETTER & DOKUMENT (GITHUB /files/) -->
     <div id="tab-docs" class="tab-pane">
-      <div class="doc-upload-box">
-        <h3 style="font-size:0.95rem; margin-bottom:4px;">📎 Ladda upp biljetter / PDF / Bilder</h3>
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Sparas offline i webbläsaren.</p>
-        <input type="file" id="fileUploader" onchange="handleFileUpload(event)" style="font-size:0.85rem;">
-      </div>
-
-      <div style="display:flex; gap:8px; margin-bottom:1rem;">
-        <input type="text" id="docLinkTitle" placeholder="Rubrik (t.ex. Katedralen bokningskod)" style="flex:1; padding:8px; border:1px solid var(--border); background:var(--surface); color:var(--text); border-radius:6px; font-size:0.85rem;">
-        <input type="text" id="docLinkUrl" placeholder="Länk (URL)..." style="flex:1; padding:8px; border:1px solid var(--border); background:var(--surface); color:var(--text); border-radius:6px; font-size:0.85rem;">
-        <button class="btn btn-primary" onclick="addManualDocLink()">Spara länk</button>
+      <div class="doc-add-panel">
+        <h3 style="font-size:0.95rem; margin-bottom:4px;">📂 Spara biljetter från GitHub (/files/)</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
+          Dina biljetter hämtas direkt från mappen <code>files/</code> på GitHub. Klicka på färgikonen för att byta färgkod.
+        </p>
+        <div class="doc-add-form">
+          <input type="text" id="docTitleInput" placeholder="Titel (t.ex. Real Betis biljetter)">
+          <input type="text" id="docFileInput" placeholder="Filnamn (t.ex. betis.pdf)">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <label style="font-size:0.75rem; color:var(--text-muted);">Färg:</label>
+            <input type="color" id="docColorInput" value="#ea580c" class="color-picker-input" title="Välj färg för att gruppera">
+          </div>
+          <button class="btn btn-primary" onclick="addGithubDoc()">+ Lägg till</button>
+        </div>
       </div>
 
       <div id="docsContainer"></div>
@@ -480,12 +561,48 @@
   <script>
     let tripData = null;
     let leafletMap = null;
-    let savedDocs = JSON.parse(localStorage.getItem("andalusien_user_docs") || "[]");
+
+    // Dina uppladdade PDF-biljetter i GitHub /files/
+    const DEFAULT_DOCS = [
+      { 
+        id: "doc-1", 
+        title: "Tåg: Sevilla ➔ Málaga T/R", 
+        filename: "sevilla-malaga-train-tur-och-retur.pdf", 
+        color: "#0284c7" 
+      },
+      { 
+        id: "doc-2", 
+        title: "Tåg: Sevilla ➔ Córdoba T/R", 
+        filename: "sevilla-cordoba-train-tur-och-retur.pdf", 
+        color: "#0284c7" 
+      },
+      { 
+        id: "doc-3", 
+        title: "Real Alcázar (Lör 14:30)", 
+        filename: "real-alcazar.pdf", 
+        color: "#ea580c" 
+      },
+      { 
+        id: "doc-4", 
+        title: "Katedralen & La Giralda (Lör 17:05)", 
+        filename: "katedralen-och-giralda.pdf", 
+        color: "#ea580c" 
+      },
+      { 
+        id: "doc-5", 
+        title: "Mezquita de Córdoba (Mån 15:00)", 
+        filename: "mezquita-de-cordoba.pdf", 
+        color: "#16a34a" 
+      }
+    ];
+
+    // Bumpad nyckel (v4) så att dina nya PDF-filer laddas in direkt
+    let savedDocs = JSON.parse(localStorage.getItem("andalusien_github_docs_v4")) || DEFAULT_DOCS;
 
     const CATEGORY_META = {
       transport:   { label: "Resa", icon: "🚆", class: "cat-transport" },
       food:        { label: "Mat & Dryck", icon: "🥘", class: "cat-food" },
-      sight:       { label: "Sevärdhet", icon: "🏛️️", class: "cat-sight" },
+      sight:       { label: "Sevärdhet", icon: "🏛", class: "cat-sight" },
       hotel:       { label: "Hotell", icon: "🏨", class: "cat-hotel" },
       chill:       { label: "Relax", icon: "☀️", class: "cat-chill" },
       placeholder: { label: "Öppet", icon: "⏳", class: "cat-placeholder" }
@@ -548,7 +665,7 @@
     async function loadData() {
       applyTheme(getStoredTheme());
       
-      const STORAGE_KEY = "andalusien_trip_data_v7";
+      const STORAGE_KEY = "andalusien_trip_data_v9";
       const localSaved = localStorage.getItem(STORAGE_KEY);
 
       if (localSaved) {
@@ -569,7 +686,7 @@
     }
 
     function saveData() {
-      localStorage.setItem("andalusien_trip_data_v7", JSON.stringify(tripData));
+      localStorage.setItem("andalusien_trip_data_v9", JSON.stringify(tripData));
     }
 
     function renderSchedule() {
@@ -603,13 +720,11 @@
                 <span class="item-title" contenteditable="true" onblur="updateItemField(${dIdx}, ${iIdx}, 'title', this.innerText)">${item.title}</span>
                 <span class="item-notes" contenteditable="true" onblur="updateItemField(${dIdx}, ${iIdx}, 'notes', this.innerText)">${item.notes || ''}</span>
                 
-                <!-- Adressfält med Maps-länk -->
                 <div class="item-address-row">
                   <span class="item-address" contenteditable="true" onblur="updateItemField(${dIdx}, ${iIdx}, 'address', this.innerText)">${item.address || ''}</span>
                   ${item.address ? `<a href="${gmapsUrl}" target="_blank" rel="noopener noreferrer" class="address-maps-btn">📍 Öppna i Maps ↗</a>` : ''}
                 </div>
 
-                <!-- Länkfält -->
                 <div class="item-link-row">
                   ${item.link ? `
                     <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="item-link">Länk ↗</a>
@@ -786,44 +901,48 @@
       });
     }
 
-    function handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        savedDocs.push({
-          id: "doc-" + Date.now(),
-          name: file.name,
-          dataUrl: e.target.result,
-          isLink: false
-        });
-        localStorage.setItem("andalusien_user_docs", JSON.stringify(savedDocs));
-        renderDocs();
-      };
-      reader.readAsDataURL(file);
+    // DOKUMENT & BILJETTER
+    function getFileHref(filename) {
+      let f = filename.trim();
+      if (f.startsWith('http://') || f.startsWith('https://')) return f;
+      if (f.startsWith('files/')) return f;
+      return 'files/' + f;
     }
 
-    function addManualDocLink() {
-      const title = document.getElementById("docLinkTitle").value.trim();
-      const url = document.getElementById("docLinkUrl").value.trim();
-      if (!title || !url) return;
+    function addGithubDoc() {
+      const title = document.getElementById("docTitleInput").value.trim();
+      let filename = document.getElementById("docFileInput").value.trim();
+      const color = document.getElementById("docColorInput").value;
+
+      if (!title || !filename) return;
 
       savedDocs.push({
         id: "doc-" + Date.now(),
-        name: title,
-        url: url,
-        isLink: true
+        title: title,
+        filename: filename,
+        color: color || "#ea580c"
       });
-      localStorage.setItem("andalusien_user_docs", JSON.stringify(savedDocs));
-      document.getElementById("docLinkTitle").value = "";
-      document.getElementById("docLinkUrl").value = "";
+
+      localStorage.setItem("andalusien_github_docs_v4", JSON.stringify(savedDocs));
+      document.getElementById("docTitleInput").value = "";
+      document.getElementById("docFileInput").value = "";
       renderDocs();
+    }
+
+    function updateDocColor(index, newColor) {
+      savedDocs[index].color = newColor;
+      localStorage.setItem("andalusien_github_docs_v4", JSON.stringify(savedDocs));
+      renderDocs();
+    }
+
+    function updateDocTitle(index, newTitle) {
+      savedDocs[index].title = newTitle.trim();
+      localStorage.setItem("andalusien_github_docs_v4", JSON.stringify(savedDocs));
     }
 
     function deleteDoc(index) {
       savedDocs.splice(index, 1);
-      localStorage.setItem("andalusien_user_docs", JSON.stringify(savedDocs));
+      localStorage.setItem("andalusien_github_docs_v4", JSON.stringify(savedDocs));
       renderDocs();
     }
 
@@ -832,23 +951,35 @@
       container.innerHTML = "";
 
       if (savedDocs.length === 0) {
-        container.innerHTML = "<p style='font-size:0.85rem; color:var(--text-muted); text-align:center;'>Inga uppladdade biljetter eller sparade länkar än.</p>";
+        container.innerHTML = "<p style='font-size:0.85rem; color:var(--text-muted); text-align:center; padding:20px;'>Inga sparade biljetter än. Lägg till ovan!</p>";
         return;
       }
 
       savedDocs.forEach((doc, idx) => {
-        const div = document.createElement("div");
-        div.className = "doc-row";
-        const linkHref = doc.isLink ? doc.url : doc.dataUrl;
+        const card = document.createElement("div");
+        card.className = "doc-card";
+        card.style.setProperty("--doc-color", doc.color || "#ea580c");
 
-        div.innerHTML = `
-          <div>
-            <div style="font-weight:600; font-size:0.9rem;">${doc.isLink ? '🔗' : '📄'} ${doc.name}</div>
-            <a href="${linkHref}" target="_blank" download="${doc.name}" style="font-size:0.75rem; color:var(--accent);">Öppna / Ladda ner ↗</a>
+        const href = getFileHref(doc.filename);
+
+        card.innerHTML = `
+          <div class="doc-card-left">
+            <div class="doc-color-badge" title="Klicka för att ändra färgkod">
+              <input type="color" value="${doc.color || '#ea580c'}" onchange="updateDocColor(${idx}, this.value)">
+            </div>
+            <div class="doc-info">
+              <span class="doc-title" contenteditable="true" onblur="updateDocTitle(${idx}, this.innerText)">${doc.title}</span>
+              <span class="doc-filename">📄 ${doc.filename}</span>
+            </div>
           </div>
-          <button class="item-delete-btn" onclick="deleteDoc(${idx})">✕</button>
+          <div class="doc-actions">
+            <a href="${href}" target="_blank" rel="noopener noreferrer" class="doc-open-btn">
+              Öppna fil ↗
+            </a>
+            <button class="item-delete-btn" title="Ta bort" onclick="deleteDoc(${idx})">✕</button>
+          </div>
         `;
-        container.appendChild(div);
+        container.appendChild(card);
       });
     }
 

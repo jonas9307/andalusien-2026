@@ -106,13 +106,13 @@
         },
         {
           "id": "d1-6",
-          "time": "00:38",
+          "time": "00:35",
           "title": "Checka in på hotell i Málaga",
           "category": "hotel",
           "notes": "OBOKAT! Välj boende nära tågstationen María Zambrano",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         }
       ]
     },
@@ -130,7 +130,7 @@
           "notes": "Frukost innan tåget",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d2-2",
@@ -147,7 +147,7 @@
           "time": "11:45",
           "title": "Lämna väskor på Hotel Monte Triana",
           "category": "hotel",
-          "notes": "BOKAT ✅ Kolla minibar för insulin & reception",
+          "notes": "Kolla minibar för insulin & reception",
           "address": "Calle Clara de Jesús Montero, 24, 41010 Sevilla",
           "link": "",
           "completed": false
@@ -160,7 +160,7 @@
           "notes": "Kolla kvarteret runt hotellet innan lunch",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d2-4",
@@ -180,7 +180,7 @@
           "notes": "Skön eftermiddagsvärme vid poolen",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d2-5",
@@ -210,7 +210,7 @@
           "notes": "Högt fredagstryck – boka bord i förväg!",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         }
       ]
     },
@@ -228,7 +228,7 @@
           "notes": "Frukostbuffé på Monte Triana",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d3-p1",
@@ -238,7 +238,7 @@
           "notes": "Slappa vid hotellpoolen i solen",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d3-2",
@@ -248,7 +248,7 @@
           "notes": "Ät nära Santa Cruz före Alcázar",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d3-3",
@@ -268,7 +268,7 @@
           "notes": "Kaffe eller glass runt Plaza del Triunfo",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d3-4",
@@ -288,7 +288,7 @@
           "notes": "Förslag: Rooftop på Querencia de Sevilla",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d3-5",
@@ -298,7 +298,7 @@
           "notes": "Lördagskväll – mycket folk ute",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         }
       ]
     },
@@ -316,7 +316,7 @@
           "notes": "Frukostbuffé på Monte Triana",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d4-p1",
@@ -326,7 +326,7 @@
           "notes": "Förslag: Ro båt vid Plaza de España eller strosa i Maria Luisa-parken",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d4-2",
@@ -336,7 +336,7 @@
           "notes": "Långlunch",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d4-p2",
@@ -346,7 +346,7 @@
           "notes": "Vila på hotellet inför matchen",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d4-3",
@@ -366,7 +366,7 @@
           "notes": "Ta sig tillbaka in mot centrum från Benito Villamarín",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d4-4",
@@ -376,7 +376,7 @@
           "notes": "Köttmiddag efter fotbollen (t.ex. Leña al Lomo el. Almansa)",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         }
       ]
     },
@@ -394,7 +394,7 @@
           "notes": "Frukostbuffé på Monte Triana",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d5-2",
@@ -424,7 +424,7 @@
           "notes": "Nationaldag = knökfullt! Boka patio i Judería (prova salmorejo & flamenquín)",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d5-5",
@@ -444,7 +444,7 @@
           "notes": "Calleja de las Flores, blomsterpatios och promenad över Puente Romano",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d5-6",
@@ -464,7 +464,7 @@
           "notes": "Nationaldagsstämning på gatorna",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         }
       ]
     },
@@ -482,7 +482,7 @@
           "notes": "Frukostbuffé på Monte Triana",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d6-p1",
@@ -492,7 +492,7 @@
           "notes": "Förslag: Dagsutflykt till kusten i Cádiz, amfiteatern i Itálica eller lugn dag i Sevilla",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d6-2",
@@ -502,7 +502,7 @@
           "notes": "Långlunch",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d6-p2",
@@ -512,7 +512,7 @@
           "notes": "Eftermiddagssol vid hotellet",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d6-p3",
@@ -522,7 +522,7 @@
           "notes": "Förslag: Boka Teatro Flamenco Triana eller solnedgång på Setas de Sevilla",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d6-3",
@@ -532,7 +532,7 @@
           "notes": "Obs: Många traditionella tapasbarer stängda tisdagar!",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         }
       ]
     },
@@ -550,7 +550,7 @@
           "notes": "Frukost och utcheckning",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d7-p1",
@@ -560,7 +560,7 @@
           "notes": "Köp souvenirer eller ta en kaffe innan tåget",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d7-2",
@@ -570,14 +570,14 @@
           "notes": "OBOKAT! Framme 15:16 (Alt: 07:51–10:02)",
           "address": "Calle Joaquín Morales y Torres, 41007 Sevilla",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d7-3",
           "time": "15:30",
           "title": "Incheckning hotell i Málaga",
           "category": "hotel",
-          "notes": "BOKAT ✅ Sista natten vid havet",
+          "notes": "Sista natten vid havet",
           "address": "",
           "link": "",
           "completed": false
@@ -590,7 +590,7 @@
           "notes": "Dopp i havet & strandpromenad",
           "address": "Paseo Marítimo Pablo Ruiz Picasso, Málaga",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d7-p3",
@@ -600,7 +600,7 @@
           "notes": "Marinan och gågatan i solnedgången",
           "address": "Paseo del Muelle Uno, 29016 Málaga",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d7-4",
@@ -610,7 +610,7 @@
           "notes": "Sardiner grillade på spett över öppen eld vid stranden!",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         }
       ]
     },
@@ -628,7 +628,7 @@
           "notes": "Njut av sista förmiddagen",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d8-p1",
@@ -638,7 +638,7 @@
           "notes": "Panoramavy över staden om tid finns",
           "address": "Calle Alcazabilla, 2, 29012 Málaga",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d8-2",
@@ -648,7 +648,7 @@
           "notes": "Enkelt och smidigt innan taxi",
           "address": "",
           "link": "",
-          "completed": false
+          "completed": true
         },
         {
           "id": "d8-3",

@@ -120,7 +120,7 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.5;
-      padding-bottom: 70px;
+      padding-bottom: 90px;
     }
 
     header {
@@ -136,6 +136,12 @@
     }
     header h1 { font-size: 1.15rem; font-weight: 700; }
     header p { font-size: 0.75rem; color: var(--text-muted); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
     .theme-toggle-btn {
       background: var(--surface-subtle);
@@ -374,7 +380,7 @@
     }
     .neighborhood-card h4 { font-size: 1rem; display: flex; justify-content: space-between; align-items: center; }
 
-    /* DOKUMENT & BILJETTER (GITHUB /files/) */
+    /* DOKUMENT & BILJETTER */
     .doc-add-panel {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -389,9 +395,7 @@
       align-items: center;
     }
     @media (max-width: 600px) {
-      .doc-add-form {
-        grid-template-columns: 1fr;
-      }
+      .doc-add-form { grid-template-columns: 1fr; }
     }
     .doc-add-form input[type="text"] {
       background: var(--surface-subtle);
@@ -424,7 +428,6 @@
       margin-bottom: 10px;
       gap: 12px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      transition: transform 0.1s;
     }
     .doc-card-left {
       display: flex;
@@ -432,11 +435,6 @@
       gap: 10px;
       flex: 1;
       min-width: 0;
-    }
-    .doc-color-badge {
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .doc-color-badge input[type="color"] {
       width: 24px;
@@ -447,26 +445,10 @@
       background: transparent;
       padding: 0;
     }
-    .doc-info {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-    .doc-title {
-      font-weight: 600;
-      font-size: 0.92rem;
-      outline: none;
-    }
-    .doc-filename {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-family: monospace;
-    }
-    .doc-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .doc-info { display: flex; flex-direction: column; min-width: 0; }
+    .doc-title { font-weight: 600; font-size: 0.92rem; outline: none; }
+    .doc-filename { font-size: 0.75rem; color: var(--text-muted); font-family: monospace; }
+    .doc-actions { display: flex; align-items: center; gap: 10px; }
     .doc-open-btn {
       background: var(--surface-subtle);
       border: 1px solid var(--border);
@@ -481,8 +463,93 @@
       gap: 4px;
       white-space: nowrap;
     }
-    .doc-open-btn:hover {
-      border-color: var(--accent);
+
+    /* FLOTERANDE SPARA-BAR I HÖRNET */
+    .save-banner {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid #334155;
+      border-radius: 30px;
+      padding: 8px 16px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      animation: slideUp 0.25s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .save-banner.active { display: flex; }
+    .save-banner-btn {
+      background: #ea580c;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .save-banner-btn:hover { background: #c2410c; }
+    .save-banner-gear {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 2px;
+    }
+
+    /* Modal för GitHub-inställningar */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(2px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+    }
+    .modal-box h3 { font-size: 1rem; margin-bottom: 8px; }
+    .modal-box p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; }
+    .modal-field { margin-bottom: 12px; }
+    .modal-field label { display: block; font-size: 0.75rem; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; color: var(--text-muted); }
+    .modal-field input {
+      width: 100%;
+      padding: 8px 10px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 16px;
     }
   </style>
 </head>
@@ -493,7 +560,10 @@
       <h1 id="tripTitle">Andalusien Reseguide 2026</h1>
       <p id="tripDates">Málaga, Sevilla & Córdoba • 8–15 Okt</p>
     </div>
-    <button class="theme-toggle-btn" onclick="cycleTheme()" id="themeBtn">🌓 Tema: Auto</button>
+    <div class="header-actions">
+      <button class="theme-toggle-btn" onclick="openGithubModal()" title="GitHub Synkinställningar">☁️ Synk</button>
+      <button class="theme-toggle-btn" onclick="cycleTheme()" id="themeBtn">🌓 Auto</button>
+    </div>
   </header>
 
   <nav class="nav-tabs">
@@ -513,7 +583,7 @@
     <!-- FLIK 2: KARTA & MAT -->
     <div id="tab-restaurants" class="tab-pane">
       <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:12px; margin-bottom:1rem;">
-        <h3 style="font-size:0.95rem; margin-bottom:4px;">🗺️️ Interaktiv Restaurang- & Platskarta</h3>
+        <h3 style="font-size:0.95rem; margin-bottom:4px;">🗺️ Interaktiv Restaurang- & Platskarta</h3>
         <p style="font-size:0.8rem; color:var(--text-muted);">
           Kartan visar alla restauranger och Hotel Monte Triana. Klicka på en markör för att öppna den direkt i Google Maps.
         </p>
@@ -556,47 +626,54 @@
 
   </div>
 
+  <!-- DISKRET FLYTANDE SPARA-BANNER I HÖRNET -->
+  <div id="saveBanner" class="save-banner">
+    <span id="saveBannerText">⚠️ Osparade ändringar</span>
+    <button class="save-banner-btn" onclick="saveToGitHub()" id="saveBtnAction">
+      ☁️ Spara till GitHub
+    </button>
+    <button class="save-banner-gear" onclick="openGithubModal()" title="Inställningar">⚙️</button>
+  </div>
+
+  <!-- MODAL: GITHUB API INSTÄLLNINGAR -->
+  <div id="githubModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>☁️ GitHub Direkt-Synk</h3>
+      <p>Koppla sidan till ditt GitHub-repo så sparas alla dina ändringar direkt i molnet i <code>data.json</code>.</p>
+      <div class="modal-field">
+        <label>GitHub Användarnamn</label>
+        <input type="text" id="ghOwnerInput" placeholder="t.ex. jonas9307">
+      </div>
+      <div class="modal-field">
+        <label>Repository Namn</label>
+        <input type="text" id="ghRepoInput" placeholder="t.ex. andalusien-2026">
+      </div>
+      <div class="modal-field">
+        <label>Personal Access Token (classic)</label>
+        <input type="password" id="ghTokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+      </div>
+      <div class="modal-actions">
+        <button class="btn" onclick="closeGithubModal()">Avbryt</button>
+        <button class="btn btn-primary" onclick="saveGithubSettings()">Spara nyckel</button>
+      </div>
+    </div>
+  </div>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
     let tripData = null;
     let leafletMap = null;
+    let hasUnsavedChanges = false;
 
-    // Dina uppladdade PDF-biljetter i GitHub /files/
     const DEFAULT_DOCS = [
-      { 
-        id: "doc-1", 
-        title: "Tåg: Sevilla ➔ Málaga T/R", 
-        filename: "sevilla-malaga-train-tur-och-retur.pdf", 
-        color: "#0284c7" 
-      },
-      { 
-        id: "doc-2", 
-        title: "Tåg: Sevilla ➔ Córdoba T/R", 
-        filename: "sevilla-cordoba-train-tur-och-retur.pdf", 
-        color: "#0284c7" 
-      },
-      { 
-        id: "doc-3", 
-        title: "Real Alcázar (Lör 14:30)", 
-        filename: "real-alcazar.pdf", 
-        color: "#ea580c" 
-      },
-      { 
-        id: "doc-4", 
-        title: "Katedralen & La Giralda (Lör 17:05)", 
-        filename: "katedralen-och-giralda.pdf", 
-        color: "#ea580c" 
-      },
-      { 
-        id: "doc-5", 
-        title: "Mezquita de Córdoba (Mån 15:00)", 
-        filename: "mezquita-de-cordoba.pdf", 
-        color: "#16a34a" 
-      }
+      { id: "doc-1", title: "Tåg: Sevilla ➔ Málaga T/R", filename: "sevilla-malaga-train-tur-och-retur.pdf", color: "#0284c7" },
+      { id: "doc-2", title: "Tåg: Sevilla ➔ Córdoba T/R", filename: "sevilla-cordoba-train-tur-och-retur.pdf", color: "#0284c7" },
+      { id: "doc-3", title: "Real Alcázar (Lör 14:30)", filename: "real-alcazar.pdf", color: "#ea580c" },
+      { id: "doc-4", title: "Katedralen & La Giralda (Lör 17:05)", filename: "katedralen-och-giralda.pdf", color: "#ea580c" },
+      { id: "doc-5", title: "Mezquita de Córdoba (Mån 15:00)", filename: "mezquita-de-cordoba.pdf", color: "#16a34a" }
     ];
 
-    // Bumpad nyckel (v4) så att dina nya PDF-filer laddas in direkt
     let savedDocs = JSON.parse(localStorage.getItem("andalusien_github_docs_v4")) || DEFAULT_DOCS;
 
     const CATEGORY_META = {
@@ -612,9 +689,9 @@
     function applyTheme(theme) {
       document.documentElement.setAttribute("data-theme", theme);
       const btn = document.getElementById("themeBtn");
-      if (theme === "dark") btn.innerHTML = "🌙 Tema: Mörkt";
-      else if (theme === "light") btn.innerHTML = "☀️ Tema: Ljust";
-      else btn.innerHTML = "🌓 Tema: Auto";
+      if (theme === "dark") btn.innerHTML = "🌙 Mörkt";
+      else if (theme === "light") btn.innerHTML = "☀️ Ljust";
+      else btn.innerHTML = "🌓 Auto";
       localStorage.setItem("theme_mode", theme);
     }
     function cycleTheme() {
@@ -662,6 +739,126 @@
       day.items.sort((a, b) => getTimeWeight(a.time) - getTimeWeight(b.time));
     }
 
+    // ÄNDRINGSHANTERING & MOLNSYNC (METOD 3)
+    function markUnsaved() {
+      hasUnsavedChanges = true;
+      localStorage.setItem("andalusien_trip_data_v9", JSON.stringify(tripData));
+      const banner = document.getElementById("saveBanner");
+      const text = document.getElementById("saveBannerText");
+      const btn = document.getElementById("saveBtnAction");
+      banner.classList.add("active");
+      text.innerText = "Du har osparade ändringar";
+      btn.innerText = "☁️ Spara till GitHub";
+      btn.disabled = false;
+    }
+
+    function openGithubModal() {
+      document.getElementById("ghOwnerInput").value = localStorage.getItem("gh_owner") || "jonas9307";
+      document.getElementById("ghRepoInput").value = localStorage.getItem("gh_repo") || "andalusien-2026";
+      document.getElementById("ghTokenInput").value = localStorage.getItem("gh_token") || "";
+      document.getElementById("githubModal").classList.add("active");
+    }
+
+    function closeGithubModal() {
+      document.getElementById("githubModal").classList.remove("active");
+    }
+
+    function saveGithubSettings() {
+      const owner = document.getElementById("ghOwnerInput").value.trim();
+      const repo = document.getElementById("ghRepoInput").value.trim();
+      const token = document.getElementById("ghTokenInput").value.trim();
+      if (!owner || !repo || !token) {
+        alert("Fyll i alla fält!");
+        return;
+      }
+      localStorage.setItem("gh_owner", owner);
+      localStorage.setItem("gh_repo", repo);
+      localStorage.setItem("gh_token", token);
+      closeGithubModal();
+      if (hasUnsavedChanges) {
+        saveToGitHub();
+      } else {
+        alert("GitHub-inställningar sparade!");
+      }
+    }
+
+    function utf8ToBase64(str) {
+      const bytes = new TextEncoder().encode(str);
+      const binString = Array.from(bytes, (byte) => String.fromCharCode(byte)).join("");
+      return btoa(binString);
+    }
+
+    async function saveToGitHub() {
+      const owner = localStorage.getItem("gh_owner");
+      const repo = localStorage.getItem("gh_repo");
+      const token = localStorage.getItem("gh_token");
+
+      if (!owner || !repo || !token) {
+        openGithubModal();
+        return;
+      }
+
+      const btn = document.getElementById("saveBtnAction");
+      const text = document.getElementById("saveBannerText");
+      btn.disabled = true;
+      btn.innerText = "Sparar...";
+
+      try {
+        // 1. Hämta befintlig SHA för data.json
+        const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/data.json`;
+        const getRes = await fetch(getUrl, {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/vnd.github.v3+json"
+          }
+        });
+
+        if (!getRes.ok) {
+          throw new Error("Kunde inte hämta filen från GitHub. Kontrollera behörighet/reponamn.");
+        }
+
+        const getData = await getRes.json();
+        const currentSha = getData.sha;
+
+        // 2. Skapa uppdaterat JSON-innehåll och koda till Base64
+        const contentStr = JSON.stringify(tripData, null, 2);
+        const base64Content = utf8ToBase64(contentStr);
+
+        // 3. Skicka PUT-request för att skriva över data.json på GitHub
+        const putRes = await fetch(getUrl, {
+          method: "PUT",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/vnd.github.v3+json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: "Uppdatera reseplan (via Reseguide App)",
+            content: base64Content,
+            sha: currentSha
+          })
+        });
+
+        if (!putRes.ok) {
+          throw new Error("GitHub nekade sparningen. Kontrollera token-rättigheter.");
+        }
+
+        hasUnsavedChanges = false;
+        text.innerText = "✅ Sparat till GitHub!";
+        btn.innerText = "Klart!";
+        setTimeout(() => {
+          if (!hasUnsavedChanges) {
+            document.getElementById("saveBanner").classList.remove("active");
+          }
+        }, 3000);
+
+      } catch (err) {
+        alert("Ett fel uppstod: " + err.message);
+        btn.disabled = false;
+        btn.innerText = "Försök igen";
+      }
+    }
+
     async function loadData() {
       applyTheme(getStoredTheme());
       
@@ -683,10 +880,6 @@
             "<p style='padding:20px; color:var(--text-muted);'>Kunde inte ladda <code>data.json</code> automatiskt.<br>Starta servern från terminalen med <code>python3 -m http.server 8000</code>.</p>";
         }
       }
-    }
-
-    function saveData() {
-      localStorage.setItem("andalusien_trip_data_v9", JSON.stringify(tripData));
     }
 
     function renderSchedule() {
@@ -773,20 +966,20 @@
 
     function toggleItemDone(dIdx, iIdx) {
       tripData.days[dIdx].items[iIdx].completed = !tripData.days[dIdx].items[iIdx].completed;
-      saveData();
+      markUnsaved();
       renderSchedule();
     }
 
     function updateItemTime(dIdx, iIdx, newTime) {
       tripData.days[dIdx].items[iIdx].time = newTime.trim();
       sortDayItems(tripData.days[dIdx]);
-      saveData();
+      markUnsaved();
       renderSchedule();
     }
 
     function updateItemField(dIdx, iIdx, field, value) {
       tripData.days[dIdx].items[iIdx][field] = value.trim();
-      saveData();
+      markUnsaved();
       if (field === 'address' || field === 'link') {
         renderSchedule();
       }
@@ -794,7 +987,7 @@
 
     function deleteItem(dIdx, iIdx) {
       tripData.days[dIdx].items.splice(iIdx, 1);
-      saveData();
+      markUnsaved();
       renderSchedule();
     }
 
@@ -819,7 +1012,7 @@
       });
 
       sortDayItems(tripData.days[dIdx]);
-      saveData();
+      markUnsaved();
       renderSchedule();
     }
 

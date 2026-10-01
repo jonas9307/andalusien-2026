@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="sv" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Andalusien Reseguide 2026</title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-subtle: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #ea580c;
+      --accent: #2563eb;
+      --danger: #ef4444;
+      --radius: 10px;
+
+      /* Stadsfärger */
+      --city-malaga: #0284c7;
+      --city-malaga-bg: #e0f2fe;
+      --city-sevilla: #ea580c;
+      --city-sevilla-bg: #ffedd5;
+      --city-cordoba: #16a34a;
+      --city-cordoba-bg: #dcfce7;
+
+      /* Kategorier */
+      --cat-transport-bg: #dbeafe; --cat-transport-text: #1e40af;
+      --cat-food-bg: #ffedd5; --cat-food-text: #9a3412;
+      --cat-sight-bg: #f3e8ff; --cat-sight-text: #6b21a8;
+      --cat-hotel-bg: #d1fae5; --cat-hotel-text: #065f46;
+      --cat-chill-bg: #cffafe; --cat-chill-text: #155e75;
+      --cat-placeholder-bg: #f1f5f9; --cat-placeholder-text: #64748b;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root[data-theme="auto"] {
+        --bg: #090d16;
+        --surface: #131b2e;
+        --surface-subtle: #1c2742;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+        --border: #233152;
+        --primary: #fb923c;
+        --accent: #60a5fa;
+
+        --city-malaga: #38bdf8;
+        --city-malaga-bg: #0c4a6e;
+        --city-sevilla: #fb923c;
+        --city-sevilla-bg: #7c2d12;
+        --city-cordoba: #4ade80;
+        --city-cordoba-bg: #14532d;
+
+        --cat-transport-bg: #1e3a8a; --cat-transport-text: #bfdbfe;
+        --cat-food-bg: #7c2d12; --cat-food-text: #fed7aa;
+        --cat-sight-bg: #581c87; --cat-sight-text: #e9d5ff;
+        --cat-hotel-bg: #064e3b; --cat-hotel-text: #a7f3d0;
+        --cat-chill-bg: #164e63; --cat-chill-text: #a5f3fc;
+        --cat-placeholder-bg: #1e293b; --cat-placeholder-text: #94a3b8;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #090d16;
+      --surface: #131b2e;
+      --surface-subtle: #1c2742;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #233152;
+      --primary: #fb923c;
+      --accent: #60a5fa;
+
+      --city-malaga: #38bdf8;
+      --city-malaga-bg: #0c4a6e;
+      --city-sevilla: #fb923c;
+      --city-sevilla-bg: #7c2d12;
+      --city-cordoba: #4ade80;
+      --city-cordoba-bg: #14532d;
+
+      --cat-transport-bg: #1e3a8a; --cat-transport-text: #bfdbfe;
+      --cat-food-bg: #7c2d12; --cat-food-text: #fed7aa;
+      --cat-sight-bg: #581c87; --cat-sight-text: #e9d5ff;
+      --cat-hotel-bg: #064e3b; --cat-hotel-text: #a7f3d0;
+      --cat-chill-bg: #164e63; --cat-chill-text: #a5f3fc;
+      --cat-placeholder-bg: #1e293b; --cat-placeholder-text: #94a3b8;
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-subtle: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #ea580c;
+      --accent: #2563eb;
+
+      --city-malaga: #0284c7;
+      --city-malaga-bg: #e0f2fe;
+      --city-sevilla: #ea580c;
+      --city-sevilla-bg: #ffedd5;
+      --city-cordoba: #16a34a;
+      --city-cordoba-bg: #dcfce7;
+
+      --cat-transport-bg: #dbeafe; --cat-transport-text: #1e40af;
+      --cat-food-bg: #ffedd5; --cat-food-text: #9a3412;
+      --cat-sight-bg: #f3e8ff; --cat-sight-text: #6b21a8;
+      --cat-hotel-bg: #d1fae5; --cat-hotel-text: #065f46;
+      --cat-chill-bg: #cffafe; --cat-chill-text: #155e75;
+      --cat-placeholder-bg: #f1f5f9; --cat-placeholder-text: #64748b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 70px;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    header h1 { font-size: 1.15rem; font-weight: 700; }
+    header p { font-size: 0.75rem; color: var(--text-muted); }
+
+    .theme-toggle-btn {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .nav-tabs {
+      display: flex;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 61px;
+      z-index: 40;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      flex: 1;
+      min-width: 80px;
+      padding: 12px 6px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+    }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    /* Dagskort */
+    .day-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .day-card.city-malaga { border-top: 5px solid var(--city-malaga); }
+    .day-card.city-sevilla { border-top: 5px solid var(--city-sevilla); }
+    .day-card.city-cordoba { border-top: 5px solid var(--city-cordoba); }
+
+    .day-header {
+      background: var(--surface-subtle);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .day-title { font-weight: 700; font-size: 1rem; }
+    .day-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+    .city-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .city-badge.malaga { background: var(--city-malaga-bg); color: var(--city-malaga); }
+    .city-badge.sevilla { background: var(--city-sevilla-bg); color: var(--city-sevilla); }
+    .city-badge.cordoba { background: var(--city-cordoba-bg); color: var(--city-cordoba); }
+
+    /* Rad-items */
+    .day-items-list { display: flex; flex-direction: column; }
+    .item-row {
+      display: grid;
+      grid-template-columns: auto auto 1fr auto;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .item-row:last-child { border-bottom: none; }
+    .item-row.completed { opacity: 0.5; }
+    .item-row.completed .item-title { text-decoration: line-through; }
+
+    .item-row.is-placeholder {
+      background: rgba(148, 163, 184, 0.07);
+      border-left: 3px dashed var(--text-muted);
+    }
+    .item-row.is-placeholder .item-title {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .item-checkbox {
+      width: 18px;
+      height: 18px;
+      margin-top: 5px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .cat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .cat-badge span[contenteditable] { outline: none; min-width: 38px; cursor: text; }
+    .cat-transport   { background: var(--cat-transport-bg); color: var(--cat-transport-text); }
+    .cat-food        { background: var(--cat-food-bg); color: var(--cat-food-text); }
+    .cat-sight       { background: var(--cat-sight-bg); color: var(--cat-sight-text); }
+    .cat-hotel       { background: var(--cat-hotel-bg); color: var(--cat-hotel-text); }
+    .cat-chill       { background: var(--cat-chill-bg); color: var(--cat-chill-text); }
+    .cat-placeholder { background: var(--cat-placeholder-bg); color: var(--cat-placeholder-text); border: 1px dashed var(--border); }
+
+    .item-details { display: flex; flex-direction: column; min-width: 0; gap: 4px; }
+    .item-title { font-size: 0.92rem; font-weight: 600; outline: none; }
+    
+    .item-notes { font-size: 0.78rem; color: var(--text-muted); outline: none; min-height: 1.1em; }
+    .item-notes:empty::before { content: "+ Anteckning..."; opacity: 0.45; font-style: italic; cursor: text; }
+
+    /* Adressfält med Maps-knapp */
+    .item-address-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+    }
+    .item-address {
+      color: var(--text-muted);
+      outline: none;
+      min-height: 1.1em;
+    }
+    .item-address:empty::before { content: "+ Lägg till adress..."; opacity: 0.45; font-style: italic; cursor: text; }
+    .address-maps-btn {
+      color: #ea4335;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    /* Länkfält */
+    .item-link-row {
+      font-size: 0.75rem;
+    }
+    .item-link {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    .item-link-edit {
+      color: var(--text-muted);
+      outline: none;
+    }
+    .item-link-edit:empty::before { content: "+ Lägg till länk..."; opacity: 0.45; font-style: italic; cursor: text; }
+
+    .item-delete-btn {
+      background: none; border: none; color: var(--text-muted);
+      font-size: 1.1rem; cursor: pointer; padding: 4px;
+    }
+    .item-delete-btn:hover { color: var(--danger); }
+
+    /* Inmatningsbar */
+    .add-item-bar {
+      padding: 12px 14px;
+      background: var(--surface-subtle);
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 65px 110px 1.2fr 1fr 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+    @media (max-width: 780px) {
+      .add-item-bar { grid-template-columns: 1fr 1fr; }
+      .add-item-bar .btn-primary { grid-column: span 2; }
+    }
+    .add-item-bar input, .add-item-bar select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      width: 100%;
+    }
+    .btn {
+      padding: 6px 14px; font-size: 0.8rem; font-weight: 600;
+      border-radius: 6px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text); cursor: pointer;
+    }
+    .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* Karta & Restauranger */
+    #mapContainer {
+      height: 380px;
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      z-index: 10;
+    }
+    .restaurant-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .tag {
+      font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;
+      background: var(--surface-subtle); color: var(--text-muted); border: 1px solid var(--border);
+    }
+    .restaurant-addr { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .maps-link-btn {
+      background: #ea4335; color: #fff; text-decoration: none;
+      padding: 6px 12px; font-size: 0.75rem; font-weight: 600; border-radius: 6px; white-space: nowrap;
+    }
+
+    /* Kvarter */
+    .neighborhood-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .neighborhood-card h4 { font-size: 1rem; display: flex; justify-content: space-between; align-items: center; }
+
+    /* Dokumentbank */
+    .doc-upload-box {
+      background: var(--surface);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .doc-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1 id="tripTitle">Andalusien Reseguide 2026</h1>
+      <p id="tripDates">Málaga, Sevilla & Córdoba • 8–15 Okt</p>
+    </div>
+    <button class="theme-toggle-btn" onclick="cycleTheme()" id="themeBtn">🌓 Tema: Auto</button>
+  </header>
+
+  <nav class="nav-tabs">
+    <button class="tab-btn active" onclick="openTab('tab-schedule')">📅 Schema</button>
+    <button class="tab-btn" onclick="openTab('tab-restaurants')">📍 Karta & Mat</button>
+    <button class="tab-btn" onclick="openTab('tab-neighborhoods')">🏛️ Kvarter</button>
+    <button class="tab-btn" onclick="openTab('tab-docs')">📂 Biljetter</button>
+  </nav>
+
+  <div class="container">
+    
+    <!-- FLIK 1: SCHEMA -->
+    <div id="tab-schedule" class="tab-pane active">
+      <div id="scheduleContainer">Laddar...</div>
+    </div>
+
+    <!-- FLIK 2: KARTA & MAT -->
+    <div id="tab-restaurants" class="tab-pane">
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:12px; margin-bottom:1rem;">
+        <h3 style="font-size:0.95rem; margin-bottom:4px;">🗺️ Interaktiv Restaurang- & Platskarta</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted);">
+          Kartan visar alla restauranger och Hotel Monte Triana. Klicka på en markör för att öppna den direkt i Google Maps.
+        </p>
+      </div>
+      <div id="mapContainer"></div>
+      <div id="restaurantsContainer"></div>
+    </div>
+
+    <!-- FLIK 3: KVARTERSGUIDE -->
+    <div id="tab-neighborhoods" class="tab-pane">
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:12px; margin-bottom:1rem;">
+        <h3 style="font-size:0.95rem; margin-bottom:4px;">Stadsdelar att strosa i</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted);">
+          Guide till Sevillas, Málagas och Córdobas mest sevärda och levande områden.
+        </p>
+      </div>
+      <div id="neighborhoodsContainer"></div>
+    </div>
+
+    <!-- FLIK 4: BILJETTER & DOKUMENT -->
+    <div id="tab-docs" class="tab-pane">
+      <div class="doc-upload-box">
+        <h3 style="font-size:0.95rem; margin-bottom:4px;">📎 Ladda upp biljetter / PDF / Bilder</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">Sparas offline i webbläsaren.</p>
+        <input type="file" id="fileUploader" onchange="handleFileUpload(event)" style="font-size:0.85rem;">
+      </div>
+
+      <div style="display:flex; gap:8px; margin-bottom:1rem;">
+        <input type="text" id="docLinkTitle" placeholder="Rubrik (t.ex. Katedralen bokningskod)" style="flex:1; padding:8px; border:1px solid var(--border); background:var(--surface); color:var(--text); border-radius:6px; font-size:0.85rem;">
+        <input type="text" id="docLinkUrl" placeholder="Länk (URL)..." style="flex:1; padding:8px; border:1px solid var(--border); background:var(--surface); color:var(--text); border-radius:6px; font-size:0.85rem;">
+        <button class="btn btn-primary" onclick="addManualDocLink()">Spara länk</button>
+      </div>
+
+      <div id="docsContainer"></div>
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script>
+    let tripData = null;
+    let leafletMap = null;
+    let savedDocs = JSON.parse(localStorage.getItem("andalusien_user_docs") || "[]");
+
+    const CATEGORY_META = {
+      transport:   { label: "Resa", icon: "🚆", class: "cat-transport" },
+      food:        { label: "Mat & Dryck", icon: "🥘", class: "cat-food" },
+      sight:       { label: "Sevärdhet", icon: "🏛️️", class: "cat-sight" },
+      hotel:       { label: "Hotell", icon: "🏨", class: "cat-hotel" },
+      chill:       { label: "Relax", icon: "☀️", class: "cat-chill" },
+      placeholder: { label: "Öppet", icon: "⏳", class: "cat-placeholder" }
+    };
+
+    function getStoredTheme() { return localStorage.getItem("theme_mode") || "auto"; }
+    function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      const btn = document.getElementById("themeBtn");
+      if (theme === "dark") btn.innerHTML = "🌙 Tema: Mörkt";
+      else if (theme === "light") btn.innerHTML = "☀️ Tema: Ljust";
+      else btn.innerHTML = "🌓 Tema: Auto";
+      localStorage.setItem("theme_mode", theme);
+    }
+    function cycleTheme() {
+      const current = getStoredTheme();
+      if (current === "auto") applyTheme("dark");
+      else if (current === "dark") applyTheme("light");
+      else applyTheme("auto");
+    }
+
+    function getCityKey(cityStr, dIdx) {
+      const c = (cityStr || '').toLowerCase();
+      if (c.includes('málaga') || c.includes('malaga')) return 'malaga';
+      if (c.includes('córdoba') || c.includes('cordoba')) return 'cordoba';
+      if (c.includes('sevilla')) return 'sevilla';
+      return (dIdx === 0 || dIdx >= 6) ? 'malaga' : (dIdx === 4 ? 'cordoba' : 'sevilla');
+    }
+
+    function getCityName(cityKey) {
+      if (cityKey === 'malaga') return 'Málaga';
+      if (cityKey === 'cordoba') return 'Córdoba';
+      return 'Sevilla';
+    }
+
+    function sortDayItems(day) {
+      const hasLateEvening = day.items.some(it => {
+        const m = (it.time || '').match(/^(\d{1,2})/);
+        return m && parseInt(m[1], 10) >= 18;
+      });
+      const hasEarlyMorning = day.items.some(it => {
+        const m = (it.time || '').match(/^(\d{1,2})/);
+        return m && parseInt(m[1], 10) < 5;
+      });
+      const crossesMidnight = hasLateEvening && hasEarlyMorning;
+
+      function getTimeWeight(timeStr) {
+        if (!timeStr || timeStr === '--:--') return 99999;
+        const match = timeStr.match(/(\d{1,2})[:.](\d{2})/);
+        if (!match) return 99999;
+        let h = parseInt(match[1], 10);
+        let m = parseInt(match[2], 10);
+        let total = h * 60 + m;
+        if (crossesMidnight && h < 5) total += 24 * 60;
+        return total;
+      }
+      day.items.sort((a, b) => getTimeWeight(a.time) - getTimeWeight(b.time));
+    }
+
+    async function loadData() {
+      applyTheme(getStoredTheme());
+      
+      const STORAGE_KEY = "andalusien_trip_data_v7";
+      const localSaved = localStorage.getItem(STORAGE_KEY);
+
+      if (localSaved) {
+        tripData = JSON.parse(localSaved);
+        tripData.days.forEach(sortDayItems);
+        renderApp();
+      } else {
+        try {
+          const res = await fetch("data.json");
+          tripData = await res.json();
+          tripData.days.forEach(sortDayItems);
+          renderApp();
+        } catch (err) {
+          document.getElementById("scheduleContainer").innerHTML = 
+            "<p style='padding:20px; color:var(--text-muted);'>Kunde inte ladda <code>data.json</code> automatiskt.<br>Starta servern från terminalen med <code>python3 -m http.server 8000</code>.</p>";
+        }
+      }
+    }
+
+    function saveData() {
+      localStorage.setItem("andalusien_trip_data_v7", JSON.stringify(tripData));
+    }
+
+    function renderSchedule() {
+      const container = document.getElementById("scheduleContainer");
+      container.innerHTML = "";
+
+      tripData.days.forEach((day, dIdx) => {
+        const cityKey = getCityKey(day.city, dIdx);
+        const cityName = getCityName(cityKey);
+
+        const card = document.createElement("div");
+        card.className = `day-card city-${cityKey}`;
+        
+        let itemsHtml = day.items.map((item, iIdx) => {
+          const meta = CATEGORY_META[item.category] || CATEGORY_META.sight;
+          const isPlaceholder = item.category === "placeholder";
+          const gmapsUrl = item.address 
+            ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}`
+            : '';
+
+          return `
+            <div class="item-row ${item.completed ? 'completed' : ''} ${isPlaceholder ? 'is-placeholder' : ''}">
+              <input type="checkbox" class="item-checkbox" ${item.completed ? 'checked' : ''} onchange="toggleItemDone(${dIdx}, ${iIdx})">
+              
+              <span class="cat-badge ${meta.class}" title="${meta.label}">
+                <span>${meta.icon}</span>
+                <span contenteditable="true" title="Klicka för att ändra tid" onblur="updateItemTime(${dIdx}, ${iIdx}, this.innerText)">${item.time || '--:--'}</span>
+              </span>
+
+              <div class="item-details">
+                <span class="item-title" contenteditable="true" onblur="updateItemField(${dIdx}, ${iIdx}, 'title', this.innerText)">${item.title}</span>
+                <span class="item-notes" contenteditable="true" onblur="updateItemField(${dIdx}, ${iIdx}, 'notes', this.innerText)">${item.notes || ''}</span>
+                
+                <!-- Adressfält med Maps-länk -->
+                <div class="item-address-row">
+                  <span class="item-address" contenteditable="true" onblur="updateItemField(${dIdx}, ${iIdx}, 'address', this.innerText)">${item.address || ''}</span>
+                  ${item.address ? `<a href="${gmapsUrl}" target="_blank" rel="noopener noreferrer" class="address-maps-btn">📍 Öppna i Maps ↗</a>` : ''}
+                </div>
+
+                <!-- Länkfält -->
+                <div class="item-link-row">
+                  ${item.link ? `
+                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="item-link">Länk ↗</a>
+                    <span class="item-link-edit" contenteditable="true" onblur="updateItemField(${dIdx},${iIdx}, 'link', this.innerText)" style="margin-left:6px; font-size:0.7rem; color:var(--text-muted);">(ändra)</span>
+                  ` : `
+                    <span class="item-link-edit" contenteditable="true" onblur="updateItemField(${dIdx},${iIdx}, 'link', this.innerText)"></span>
+                  `}
+                </div>
+              </div>
+
+              <button class="item-delete-btn" title="Ta bort" onclick="deleteItem(${dIdx}, ${iIdx})">✕</button>
+            </div>
+          `;
+        }).join("");
+
+        card.innerHTML = `
+          <div class="day-header">
+            <div>
+              <span class="day-title">${day.date}</span>
+              <div class="day-sub">${day.summary}</div>
+            </div>
+            <span class="city-badge ${cityKey}">📍 ${cityName}</span>
+          </div>
+          <div class="day-items-list">
+            ${itemsHtml}
+          </div>
+          <div class="add-item-bar">
+            <input type="text" placeholder="Tid" id="newTime-${dIdx}">
+            <select id="newCat-${dIdx}">
+              <option value="sight">Sevärdhet</option>
+              <option value="food">Mat/Restaurang</option>
+              <option value="chill">Relax/Pool</option>
+              <option value="transport">Transport</option>
+              <option value="hotel">Hotell</option>
+              <option value="placeholder">Öppen slot</option>
+            </select>
+            <input type="text" placeholder="Aktivitet..." id="newTitle-${dIdx}">
+            <input type="text" placeholder="Anteckning..." id="newNotes-${dIdx}">
+            <input type="text" placeholder="Adress..." id="newAddr-${dIdx}">
+            <button class="btn btn-primary" onclick="addItemToDay(${dIdx})">+ Lägg till</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function toggleItemDone(dIdx, iIdx) {
+      tripData.days[dIdx].items[iIdx].completed = !tripData.days[dIdx].items[iIdx].completed;
+      saveData();
+      renderSchedule();
+    }
+
+    function updateItemTime(dIdx, iIdx, newTime) {
+      tripData.days[dIdx].items[iIdx].time = newTime.trim();
+      sortDayItems(tripData.days[dIdx]);
+      saveData();
+      renderSchedule();
+    }
+
+    function updateItemField(dIdx, iIdx, field, value) {
+      tripData.days[dIdx].items[iIdx][field] = value.trim();
+      saveData();
+      if (field === 'address' || field === 'link') {
+        renderSchedule();
+      }
+    }
+
+    function deleteItem(dIdx, iIdx) {
+      tripData.days[dIdx].items.splice(iIdx, 1);
+      saveData();
+      renderSchedule();
+    }
+
+    function addItemToDay(dIdx) {
+      const time = document.getElementById(`newTime-${dIdx}`).value.trim();
+      const cat = document.getElementById(`newCat-${dIdx}`).value;
+      const title = document.getElementById(`newTitle-${dIdx}`).value.trim();
+      const notes = document.getElementById(`newNotes-${dIdx}`).value.trim();
+      const addr = document.getElementById(`newAddr-${dIdx}`).value.trim();
+
+      if (!title) return;
+
+      tripData.days[dIdx].items.push({
+        id: "item-" + Date.now(),
+        time: time || "--:--",
+        category: cat,
+        title: title,
+        notes: notes || "",
+        address: addr || "",
+        link: "",
+        completed: false
+      });
+
+      sortDayItems(tripData.days[dIdx]);
+      saveData();
+      renderSchedule();
+    }
+
+    function renderNeighborhoods() {
+      const container = document.getElementById("neighborhoodsContainer");
+      container.innerHTML = "";
+
+      const list = tripData.neighborhoods || [];
+      list.forEach(n => {
+        const div = document.createElement("div");
+        div.className = "neighborhood-card";
+        div.innerHTML = `
+          <h4>
+            <span>${n.name}</span>
+            <span class="tag">📍 ${n.city}</span>
+          </h4>
+          <p style="font-size:0.8rem; font-weight:600; color:var(--primary); margin:4px 0;">${n.vibe}</p>
+          <p style="font-size:0.85rem; color:var(--text-muted);">${n.desc}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function initMap() {
+      if (!tripData || !tripData.restaurants) return;
+      if (leafletMap) return;
+
+      leafletMap = L.map('mapContainer').setView([37.388, -5.996], 14);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(leafletMap);
+
+      tripData.restaurants.forEach(rest => {
+        if (!rest.lat || !rest.lng) return;
+
+        const isHotel = rest.type === 'Hotell';
+        const gmapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rest.name + ' ' + (rest.address || 'Sevilla'))}`;
+
+        const marker = L.marker([rest.lat, rest.lng]).addTo(leafletMap);
+        marker.bindPopup(`
+          <div style="font-family:sans-serif; min-width:180px;">
+            <strong style="font-size:0.95rem; color:#0f172a;">${isHotel ? '🏨 ' : '🥘 '}${rest.name}</strong><br>
+            <span style="font-size:0.75rem; color:#64748b;">${rest.type} • ${rest.neighborhood}</span><br>
+            <p style="font-size:0.8rem; margin:6px 0;">${rest.specialty || ''}</p>
+            <p style="font-size:0.75rem; color:#475569; margin-bottom:8px;">📍 ${rest.address || ''}</p>
+            <a href="${gmapsLink}" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#ea4335; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; text-decoration:none; font-weight:bold;">
+              Öppna i Google Maps ↗
+            </a>
+          </div>
+        `);
+      });
+    }
+
+    function renderRestaurants() {
+      const container = document.getElementById("restaurantsContainer");
+      container.innerHTML = "";
+
+      tripData.restaurants.forEach(rest => {
+        const div = document.createElement("div");
+        div.className = "restaurant-card";
+        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rest.name + ' ' + (rest.address || 'Sevilla'))}`;
+
+        div.innerHTML = `
+          <div>
+            <h4 style="font-size:0.95rem;">${rest.name}</h4>
+            <div style="display:flex; gap:6px; margin:3px 0;">
+              <span class="tag">📍 ${rest.neighborhood}</span>
+              <span class="tag">🏷️ ${rest.type}</span>
+            </div>
+            <p style="font-size:0.8rem; color:var(--text-muted);">${rest.specialty}</p>
+            <p class="restaurant-addr">📍 ${rest.address || 'Sevilla'}</p>
+          </div>
+          <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="maps-link-btn">
+            🗺️ Maps
+          </a>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        savedDocs.push({
+          id: "doc-" + Date.now(),
+          name: file.name,
+          dataUrl: e.target.result,
+          isLink: false
+        });
+        localStorage.setItem("andalusien_user_docs", JSON.stringify(savedDocs));
+        renderDocs();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function addManualDocLink() {
+      const title = document.getElementById("docLinkTitle").value.trim();
+      const url = document.getElementById("docLinkUrl").value.trim();
+      if (!title || !url) return;
+
+      savedDocs.push({
+        id: "doc-" + Date.now(),
+        name: title,
+        url: url,
+        isLink: true
+      });
+      localStorage.setItem("andalusien_user_docs", JSON.stringify(savedDocs));
+      document.getElementById("docLinkTitle").value = "";
+      document.getElementById("docLinkUrl").value = "";
+      renderDocs();
+    }
+
+    function deleteDoc(index) {
+      savedDocs.splice(index, 1);
+      localStorage.setItem("andalusien_user_docs", JSON.stringify(savedDocs));
+      renderDocs();
+    }
+
+    function renderDocs() {
+      const container = document.getElementById("docsContainer");
+      container.innerHTML = "";
+
+      if (savedDocs.length === 0) {
+        container.innerHTML = "<p style='font-size:0.85rem; color:var(--text-muted); text-align:center;'>Inga uppladdade biljetter eller sparade länkar än.</p>";
+        return;
+      }
+
+      savedDocs.forEach((doc, idx) => {
+        const div = document.createElement("div");
+        div.className = "doc-row";
+        const linkHref = doc.isLink ? doc.url : doc.dataUrl;
+
+        div.innerHTML = `
+          <div>
+            <div style="font-weight:600; font-size:0.9rem;">${doc.isLink ? '🔗' : '📄'} ${doc.name}</div>
+            <a href="${linkHref}" target="_blank" download="${doc.name}" style="font-size:0.75rem; color:var(--accent);">Öppna / Ladda ner ↗</a>
+          </div>
+          <button class="item-delete-btn" onclick="deleteDoc(${idx})">✕</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function openTab(tabId) {
+      document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById(tabId).classList.add("active");
+      event.target.classList.add("active");
+
+      if (tabId === 'tab-restaurants') {
+        setTimeout(() => {
+          if (!leafletMap) initMap();
+          else leafletMap.invalidateSize();
+        }, 100);
+      }
+    }
+
+    function renderApp() {
+      renderSchedule();
+      renderNeighborhoods();
+      renderRestaurants();
+      renderDocs();
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

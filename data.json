@@ -54,12 +54,66 @@
       "city": "Málaga",
       "summary": "Resdag & ankomst till kusten",
       "items": [
-        { "id": "d1-1", "time": "17:30", "title": "Åk hemifrån", "category": "transport", "notes": "Mot Landvetter flygplats", "address": "", "link": "", "completed": false },
-        { "id": "d1-2", "time": "18:00", "title": "På Landvetter flygplats", "category": "transport", "notes": "Incheckning och säkerhetskontroll 2h innan", "address": "Flygplatsvägen, 438 80 Härryda", "link": "", "completed": false },
-        { "id": "d1-3", "time": "20:00", "title": "Flyget avgår mot Málaga (GOT -> AGP)", "category": "transport", "notes": "BOKAT ✅", "address": "", "link": "", "completed": false },
-        { "id": "d1-4", "time": "23:55", "title": "Landning i Málaga", "category": "transport", "notes": "Hämta bagage", "address": "Avenida del Comandante García Morato, 29004 Málaga", "link": "", "completed": false },
-        { "id": "d1-5", "time": "00:15", "title": "Taxi till hotellet", "category": "transport", "notes": "Officiell taxikö utanför terminalen", "address": "", "link": "", "completed": false },
-        { "id": "d1-6", "time": "00:35", "title": "Checka in på hotell i Málaga", "category": "hotel", "notes": "OBOKAT! Välj boende nära tågstationen María Zambrano", "address": "", "link": "", "completed": false }
+        {
+          "id": "d1-1",
+          "time": "17:30",
+          "title": "Åk hemifrån",
+          "category": "transport",
+          "notes": "Mot Landvetter flygplats",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d1-2",
+          "time": "18:00",
+          "title": "På Landvetter flygplats",
+          "category": "transport",
+          "notes": "Incheckning och säkerhetskontroll 2h innan",
+          "address": "Flygplatsvägen, 438 80 Härryda",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d1-3",
+          "time": "20:00",
+          "title": "Flyget avgår mot Málaga (GOT -> AGP)",
+          "category": "transport",
+          "notes": "BOKAT ✅",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d1-4",
+          "time": "23:55",
+          "title": "Landning i Málaga",
+          "category": "transport",
+          "notes": "Hämta bagage",
+          "address": "Avenida del Comandante García Morato, 29004 Málaga",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d1-5",
+          "time": "00:15",
+          "title": "Taxi till hotellet",
+          "category": "transport",
+          "notes": "Officiell taxikö utanför terminalen",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d1-6",
+          "time": "00:36",
+          "title": "Checka in på hotell i Málaga",
+          "category": "hotel",
+          "notes": "OBOKAT! Välj boende nära tågstationen María Zambrano",
+          "address": "",
+          "link": "",
+          "completed": false
+        }
       ]
     },
     {
@@ -68,15 +122,96 @@
       "city": "Sevilla",
       "summary": "Tåg till Sevilla, Hotel Monte Triana & Walking Tour",
       "items": [
-        { "id": "d2-1", "time": "08:15", "title": "Frukost på hotellet (ingår)", "category": "food", "notes": "Frukost innan tåget", "address": "", "link": "", "completed": false },
-        { "id": "d2-2", "time": "09:12", "title": "Snabbtåg Málaga -> Sevilla (Santa Justa)", "category": "transport", "notes": "Framme 11:19", "address": "Calle Joaquín Morales y Torres, 41007 Sevilla", "link": "", "completed": false },
-        { "id": "d2-3", "time": "11:45", "title": "Lämna väskor på Hotel Monte Triana", "category": "hotel", "notes": "BOKAT ✅ Kolla minibar för insulin & reception", "address": "Calle Clara de Jesús Montero, 24, 41010 Sevilla", "link": "", "completed": false },
-        { "id": "d2-p1", "time": "12:15", "title": "[Öppen slot: Stadsspaning i Triana / Kaffe]", "category": "placeholder", "notes": "Kolla kvarteret runt hotellet innan lunch", "address": "", "link": "", "completed": false },
-        { "id": "d2-4", "time": "13:30", "title": "LUNCH (13:30–15:00)", "category": "food", "notes": "Förslag: Mercado de Triana eller tapas på Calle San Jacinto", "address": "", "link": "", "completed": false },
-        { "id": "d2-p2", "time": "15:00", "title": "[Öppen slot: Poolhäng / Siesta på hotellet]", "category": "placeholder", "notes": "Skön eftermiddagsvärme vid poolen", "address": "", "link": "", "completed": false },
-        { "id": "d2-5", "time": "17:00", "title": "Free Walking Tour Sevilla (17:00–19:00)", "category": "sight", "notes": "BOKAT ✅ Ha med 10–15 € var i cash till guiden", "address": "Plaza del Salvador, Sevilla", "link": "", "completed": false },
-        { "id": "d2-p3", "time": "19:15", "title": "[Öppen slot: Tardeo / Fördrink efter turen]", "category": "placeholder", "notes": "Förslag: Ett glas vin eller öl vid Alameda eller Santa Cruz", "address": "", "link": "", "completed": false },
-        { "id": "d2-6", "time": "21:00", "title": "MIDDAG (BOKA!)", "category": "food", "notes": "Högt fredagstryck – boka bord i förväg!", "address": "", "link": "", "completed": false }
+        {
+          "id": "d2-1",
+          "time": "08:15",
+          "title": "Frukost på hotellet (ingår)",
+          "category": "food",
+          "notes": "Frukost innan tåget",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d2-2",
+          "time": "09:12",
+          "title": "Snabbtåg Málaga -> Sevilla (Santa Justa)",
+          "category": "transport",
+          "notes": "Framme 11:19",
+          "address": "Calle Joaquín Morales y Torres, 41007 Sevilla",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d2-3",
+          "time": "11:45",
+          "title": "Lämna väskor på Hotel Monte Triana",
+          "category": "hotel",
+          "notes": "BOKAT ✅ Kolla minibar för insulin & reception",
+          "address": "Calle Clara de Jesús Montero, 24, 41010 Sevilla",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d2-p1",
+          "time": "12:15",
+          "title": "[Öppen slot: Stadsspaning i Triana / Kaffe]",
+          "category": "placeholder",
+          "notes": "Kolla kvarteret runt hotellet innan lunch",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d2-4",
+          "time": "13:30",
+          "title": "LUNCH (13:30–15:00)",
+          "category": "food",
+          "notes": "Förslag: Mercado de Triana eller tapas på Calle San Jacinto",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d2-p2",
+          "time": "15:00",
+          "title": "[Öppen slot: Poolhäng / Siesta på hotellet]",
+          "category": "placeholder",
+          "notes": "Skön eftermiddagsvärme vid poolen",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d2-5",
+          "time": "17:00",
+          "title": "Free Walking Tour Sevilla (17:00–19:00)",
+          "category": "sight",
+          "notes": "BOKAT ✅ Ha med 10–15 € var i cash till guiden",
+          "address": "Plaza del Salvador, Sevilla",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d2-p3",
+          "time": "19:15",
+          "title": "[Öppen slot: Tardeo / Fördrink efter turen]",
+          "category": "placeholder",
+          "notes": "Förslag: Ett glas vin eller öl vid Alameda eller Santa Cruz",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d2-6",
+          "time": "21:00",
+          "title": "MIDDAG (BOKA!)",
+          "category": "food",
+          "notes": "Högt fredagstryck – boka bord i förväg!",
+          "address": "",
+          "link": "",
+          "completed": false
+        }
       ]
     },
     {
@@ -85,14 +220,86 @@
       "city": "Sevilla",
       "summary": "Real Alcázar & La Giralda",
       "items": [
-        { "id": "d3-1", "time": "09:30", "title": "Frukost på hotellet (ingår)", "category": "food", "notes": "Frukostbuffé på Monte Triana", "address": "", "link": "", "completed": false },
-        { "id": "d3-p1", "time": "10:30", "title": "[Öppen slot: Poolförmiddag / Vila]", "category": "placeholder", "notes": "Slappa vid hotellpoolen i solen", "address": "", "link": "", "completed": false },
-        { "id": "d3-2", "time": "13:00", "title": "LUNCH (13:00–14:15)", "category": "food", "notes": "Ät nära Santa Cruz före Alcázar", "address": "", "link": "", "completed": false },
-        { "id": "d3-3", "time": "14:30", "title": "Real Alcázar (Kungliga Palatset)", "category": "sight", "notes": "BOKAT KL 14:30 ✅ Morisk arkitektur och trädgårdar", "address": "Patio de Banderas, s/n, 41004 Sevilla", "link": "", "completed": false },
-        { "id": "d3-p2", "time": "16:30", "title": "[Öppen slot: Paus mellan besöken]", "category": "placeholder", "notes": "Kaffe eller glass runt Plaza del Triunfo", "address": "", "link": "", "completed": false },
-        { "id": "d3-4", "time": "17:05", "title": "Katedralen i Sevilla & La Giralda", "category": "sight", "notes": "BOKAT KL 17:05 ✅ Klättra upp i klocktornet", "address": "Avenida de la Constitución, s/n, 41004 Sevilla", "link": "", "completed": false },
-        { "id": "d3-p3", "time": "19:00", "title": "[Öppen slot: Drink med vy / Rooftop]", "category": "placeholder", "notes": "Förslag: Rooftop på Querencia de Sevilla", "address": "", "link": "", "completed": false },
-        { "id": "d3-5", "time": "21:30", "title": "MIDDAG (BOKA!)", "category": "food", "notes": "Lördagskväll – mycket folk ute", "address": "", "link": "", "completed": false }
+        {
+          "id": "d3-1",
+          "time": "09:30",
+          "title": "Frukost på hotellet (ingår)",
+          "category": "food",
+          "notes": "Frukostbuffé på Monte Triana",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d3-p1",
+          "time": "10:30",
+          "title": "[Öppen slot: Poolförmiddag / Vila]",
+          "category": "placeholder",
+          "notes": "Slappa vid hotellpoolen i solen",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d3-2",
+          "time": "13:00",
+          "title": "LUNCH (13:00–14:15)",
+          "category": "food",
+          "notes": "Ät nära Santa Cruz före Alcázar",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d3-3",
+          "time": "14:30",
+          "title": "Real Alcázar (Kungliga Palatset)",
+          "category": "sight",
+          "notes": "BOKAT KL 14:30 ✅ Morisk arkitektur och trädgårdar",
+          "address": "Patio de Banderas, s/n, 41004 Sevilla",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d3-p2",
+          "time": "16:30",
+          "title": "[Öppen slot: Paus mellan besöken]",
+          "category": "placeholder",
+          "notes": "Kaffe eller glass runt Plaza del Triunfo",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d3-4",
+          "time": "17:05",
+          "title": "Katedralen i Sevilla & La Giralda",
+          "category": "sight",
+          "notes": "BOKAT KL 17:05 ✅ Klättra upp i klocktornet",
+          "address": "Avenida de la Constitución, s/n, 41004 Sevilla",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d3-p3",
+          "time": "19:00",
+          "title": "[Öppen slot: Drink med vy / Rooftop]",
+          "category": "placeholder",
+          "notes": "Förslag: Rooftop på Querencia de Sevilla",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d3-5",
+          "time": "21:30",
+          "title": "MIDDAG (BOKA!)",
+          "category": "food",
+          "notes": "Lördagskväll – mycket folk ute",
+          "address": "",
+          "link": "",
+          "completed": false
+        }
       ]
     },
     {
@@ -101,13 +308,76 @@
       "city": "Sevilla",
       "summary": "Matchdag: Real Betis – Osasuna",
       "items": [
-        { "id": "d4-1", "time": "09:30", "title": "Frukost på hotellet (ingår)", "category": "food", "notes": "Frukostbuffé på Monte Triana", "address": "", "link": "", "completed": false },
-        { "id": "d4-p1", "time": "10:30", "title": "[Öppen slot: Förmiddagsaktivitet]", "category": "placeholder", "notes": "Förslag: Ro båt vid Plaza de España eller strosa i Maria Luisa-parken", "address": "", "link": "", "completed": false },
-        { "id": "d4-2", "time": "13:30", "title": "LUNCH (13:30–15:00)", "category": "food", "notes": "Långlunch", "address": "", "link": "", "completed": false },
-        { "id": "d4-p2", "time": "15:30", "title": "[Öppen slot: Pool / Ladda upp]", "category": "placeholder", "notes": "Vila på hotellet inför matchen", "address": "", "link": "", "completed": false },
-        { "id": "d4-3", "time": "18:30", "title": "FOTBOLL: Real Betis – Osasuna", "category": "sight", "notes": "BOKAT KL 18:30 ✅ Kom i god tid!", "address": "Avenida de Heliópolis, s/n, 41012 Sevilla", "link": "", "completed": false },
-        { "id": "d4-p3", "time": "20:30", "title": "[Öppen slot: Transport från arenan]", "category": "placeholder", "notes": "Ta sig tillbaka in mot centrum från Benito Villamarín", "address": "", "link": "", "completed": false },
-        { "id": "d4-4", "time": "21:30", "title": "MIDDAG: Galician Beef / Asador (BOKA!)", "category": "food", "notes": "Köttmiddag efter fotbollen (t.ex. Leña al Lomo el. Almansa)", "address": "", "link": "", "completed": false }
+        {
+          "id": "d4-1",
+          "time": "09:30",
+          "title": "Frukost på hotellet (ingår)",
+          "category": "food",
+          "notes": "Frukostbuffé på Monte Triana",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d4-p1",
+          "time": "10:30",
+          "title": "[Öppen slot: Förmiddagsaktivitet]",
+          "category": "placeholder",
+          "notes": "Förslag: Ro båt vid Plaza de España eller strosa i Maria Luisa-parken",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d4-2",
+          "time": "13:30",
+          "title": "LUNCH (13:30–15:00)",
+          "category": "food",
+          "notes": "Långlunch",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d4-p2",
+          "time": "15:30",
+          "title": "[Öppen slot: Pool / Ladda upp]",
+          "category": "placeholder",
+          "notes": "Vila på hotellet inför matchen",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d4-3",
+          "time": "18:30",
+          "title": "FOTBOLL: Real Betis – Osasuna",
+          "category": "sight",
+          "notes": "BOKAT KL 18:30 ✅ Kom i god tid!",
+          "address": "Avenida de Heliópolis, s/n, 41012 Sevilla",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d4-p3",
+          "time": "20:30",
+          "title": "[Öppen slot: Transport från arenan]",
+          "category": "placeholder",
+          "notes": "Ta sig tillbaka in mot centrum från Benito Villamarín",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d4-4",
+          "time": "21:30",
+          "title": "MIDDAG: Galician Beef / Asador (BOKA!)",
+          "category": "food",
+          "notes": "Köttmiddag efter fotbollen (t.ex. Leña al Lomo el. Almansa)",
+          "address": "",
+          "link": "",
+          "completed": false
+        }
       ]
     },
     {
@@ -116,14 +386,86 @@
       "city": "Córdoba",
       "summary": "Nationaldagen: Dagsutflykt Córdoba & Mezquita",
       "items": [
-        { "id": "d5-1", "time": "09:30", "title": "Frukost på hotellet (ingår)", "category": "food", "notes": "Frukostbuffé på Monte Triana", "address": "", "link": "", "completed": false },
-        { "id": "d5-2", "time": "10:45", "title": "Taxi till Santa Justa tågstation", "category": "transport", "notes": "Ca 15 min körtid från Triana", "address": "Calle Joaquín Morales y Torres, 41007 Sevilla", "link": "", "completed": false },
-        { "id": "d5-3", "time": "11:32", "title": "Snabbtåg Sevilla -> Córdoba", "category": "transport", "notes": "Framme 12:13 (biljett flexibel ✅)", "address": "Glorieta de las Tres Culturas, 14011 Córdoba", "link": "", "completed": false },
-        { "id": "d5-4", "time": "12:30", "title": "LUNCH i Córdoba (BOKA!)", "category": "food", "notes": "Nationaldag = knökfullt! Boka patio i Judería (prova salmorejo & flamenquín)", "address": "", "link": "", "completed": false },
-        { "id": "d5-5", "time": "15:00", "title": "Mezquita (Moské-katedralen)", "category": "sight", "notes": "BOKAT KL 15:00 ✅ Unikt världsarv", "address": "Calle del Cardenal Herrero, 1, 14003 Córdoba", "link": "", "completed": false },
-        { "id": "d5-p1", "time": "16:30", "title": "[Öppen slot: Judiska kvarteren / Festival Flora / Romerska bron]", "category": "placeholder", "notes": "Calleja de las Flores, blomsterpatios och promenad över Puente Romano", "address": "", "link": "", "completed": false },
-        { "id": "d5-6", "time": "18:17", "title": "Tåg Córdoba -> Sevilla", "category": "transport", "notes": "Framme i Sevilla kl 19:14 ✅", "address": "Glorieta de las Tres Culturas, 14011 Córdoba", "link": "", "completed": false },
-        { "id": "d5-7", "time": "21:00", "title": "MIDDAG i Triana / Sevilla (BOKA!)", "category": "food", "notes": "Nationaldagsstämning på gatorna", "address": "", "link": "", "completed": false }
+        {
+          "id": "d5-1",
+          "time": "09:30",
+          "title": "Frukost på hotellet (ingår)",
+          "category": "food",
+          "notes": "Frukostbuffé på Monte Triana",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d5-2",
+          "time": "10:45",
+          "title": "Taxi till Santa Justa tågstation",
+          "category": "transport",
+          "notes": "Ca 15 min körtid från Triana",
+          "address": "Calle Joaquín Morales y Torres, 41007 Sevilla",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d5-3",
+          "time": "11:32",
+          "title": "Snabbtåg Sevilla -> Córdoba",
+          "category": "transport",
+          "notes": "Framme 12:13 (biljett flexibel ✅)",
+          "address": "Glorieta de las Tres Culturas, 14011 Córdoba",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d5-4",
+          "time": "12:30",
+          "title": "LUNCH i Córdoba (BOKA!)",
+          "category": "food",
+          "notes": "Nationaldag = knökfullt! Boka patio i Judería (prova salmorejo & flamenquín)",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d5-5",
+          "time": "15:00",
+          "title": "Mezquita (Moské-katedralen)",
+          "category": "sight",
+          "notes": "BOKAT KL 15:00 ✅ Unikt världsarv",
+          "address": "Calle del Cardenal Herrero, 1, 14003 Córdoba",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d5-p1",
+          "time": "16:30",
+          "title": "[Öppen slot: Judiska kvarteren / Festival Flora / Romerska bron]",
+          "category": "placeholder",
+          "notes": "Calleja de las Flores, blomsterpatios och promenad över Puente Romano",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d5-6",
+          "time": "18:17",
+          "title": "Tåg Córdoba -> Sevilla",
+          "category": "transport",
+          "notes": "Framme i Sevilla kl 19:14 ✅",
+          "address": "Glorieta de las Tres Culturas, 14011 Córdoba",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d5-7",
+          "time": "21:00",
+          "title": "MIDDAG i Triana / Sevilla (BOKA!)",
+          "category": "food",
+          "notes": "Nationaldagsstämning på gatorna",
+          "address": "",
+          "link": "",
+          "completed": false
+        }
       ]
     },
     {
@@ -132,12 +474,66 @@
       "city": "Sevilla",
       "summary": "Öppen dag: Sevilla i lugnt tempo eller utflykt",
       "items": [
-        { "id": "d6-1", "time": "09:30", "title": "Frukost på hotellet (ingår)", "category": "food", "notes": "Frukostbuffé på Monte Triana", "address": "", "link": "", "completed": false },
-        { "id": "d6-p1", "time": "10:30", "title": "[Öppen slot: Cádiz, Itálica eller Sevilla]", "category": "placeholder", "notes": "Förslag: Dagsutflykt till kusten i Cádiz, amfiteatern i Itálica eller lugn dag i Sevilla", "address": "", "link": "", "completed": false },
-        { "id": "d6-2", "time": "13:30", "title": "LUNCH (13:30–15:00)", "category": "food", "notes": "Långlunch", "address": "", "link": "", "completed": false },
-        { "id": "d6-p2", "time": "15:30", "title": "[Öppen slot: Pool / Siesta]", "category": "placeholder", "notes": "Eftermiddagssol vid hotellet", "address": "", "link": "", "completed": false },
-        { "id": "d6-p3", "time": "18:00", "title": "[Öppen slot: Flamenco-show eller Setas de Sevilla]", "category": "placeholder", "notes": "Förslag: Boka Teatro Flamenco Triana eller solnedgång på Setas de Sevilla", "address": "", "link": "", "completed": false },
-        { "id": "d6-3", "time": "21:00", "title": "MIDDAG (BOKA!)", "category": "food", "notes": "Obs: Många traditionella tapasbarer stängda tisdagar!", "address": "", "link": "", "completed": false }
+        {
+          "id": "d6-1",
+          "time": "09:30",
+          "title": "Frukost på hotellet (ingår)",
+          "category": "food",
+          "notes": "Frukostbuffé på Monte Triana",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d6-p1",
+          "time": "10:30",
+          "title": "[Öppen slot: Cádiz, Itálica eller Sevilla]",
+          "category": "placeholder",
+          "notes": "Förslag: Dagsutflykt till kusten i Cádiz, amfiteatern i Itálica eller lugn dag i Sevilla",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d6-2",
+          "time": "13:30",
+          "title": "LUNCH (13:30–15:00)",
+          "category": "food",
+          "notes": "Långlunch",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d6-p2",
+          "time": "15:30",
+          "title": "[Öppen slot: Pool / Siesta]",
+          "category": "placeholder",
+          "notes": "Eftermiddagssol vid hotellet",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d6-p3",
+          "time": "18:00",
+          "title": "[Öppen slot: Flamenco-show eller Setas de Sevilla]",
+          "category": "placeholder",
+          "notes": "Förslag: Boka Teatro Flamenco Triana eller solnedgång på Setas de Sevilla",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d6-3",
+          "time": "21:00",
+          "title": "MIDDAG (BOKA!)",
+          "category": "food",
+          "notes": "Obs: Många traditionella tapasbarer stängda tisdagar!",
+          "address": "",
+          "link": "",
+          "completed": false
+        }
       ]
     },
     {
@@ -146,13 +542,76 @@
       "city": "Málaga",
       "summary": "Tåg till Málaga, stranden & grillade espetos",
       "items": [
-        { "id": "d7-1", "time": "09:30", "title": "Frukost på hotellet (ingår)", "category": "food", "notes": "Frukost och utcheckning", "address": "", "link": "", "completed": false },
-        { "id": "d7-p1", "time": "10:30", "title": "[Öppen slot: Sista strosandet i Sevilla]", "category": "placeholder", "notes": "Köp souvenirer eller ta en kaffe innan tåget", "address": "", "link": "", "completed": false },
-        { "id": "d7-2", "time": "13:08", "title": "Snabbtåg Sevilla -> Málaga", "category": "transport", "notes": "OBOKAT! Framme 15:16 (Alt: 07:51–10:02)", "address": "Calle Joaquín Morales y Torres, 41007 Sevilla", "link": "", "completed": false },
-        { "id": "d7-3", "time": "15:30", "title": "Incheckning hotell i Málaga", "category": "hotel", "notes": "BOKAT ✅ Sista natten vid havet", "address": "", "link": "", "completed": false },
-        { "id": "d7-p2", "time": "16:30", "title": "[Öppen slot: Strandhäng Playa de La Malagueta]", "category": "placeholder", "notes": "Dopp i havet & strandpromenad", "address": "Paseo Marítimo Pablo Ruiz Picasso, Málaga", "link": "", "completed": false },
-        { "id": "d7-p3", "time": "18:30", "title": "[Öppen slot: Strosa vid Muelle Uno & Calle Larios]", "category": "placeholder", "notes": "Marinan och gågatan i solnedgången", "address": "Paseo del Muelle Uno, 29016 Málaga", "link": "", "completed": false },
-        { "id": "d7-4", "time": "20:30", "title": "MIDDAG: Grillade espetos på strand-chiringuito", "category": "food", "notes": "Sardiner grillade på spett över öppen eld vid stranden!", "address": "", "link": "", "completed": false }
+        {
+          "id": "d7-1",
+          "time": "09:30",
+          "title": "Frukost på hotellet (ingår)",
+          "category": "food",
+          "notes": "Frukost och utcheckning",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d7-p1",
+          "time": "10:30",
+          "title": "[Öppen slot: Sista strosandet i Sevilla]",
+          "category": "placeholder",
+          "notes": "Köp souvenirer eller ta en kaffe innan tåget",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d7-2",
+          "time": "13:08",
+          "title": "Snabbtåg Sevilla -> Málaga",
+          "category": "transport",
+          "notes": "OBOKAT! Framme 15:16 (Alt: 07:51–10:02)",
+          "address": "Calle Joaquín Morales y Torres, 41007 Sevilla",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d7-3",
+          "time": "15:30",
+          "title": "Incheckning hotell i Málaga",
+          "category": "hotel",
+          "notes": "BOKAT ✅ Sista natten vid havet",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d7-p2",
+          "time": "16:30",
+          "title": "[Öppen slot: Strandhäng Playa de La Malagueta]",
+          "category": "placeholder",
+          "notes": "Dopp i havet & strandpromenad",
+          "address": "Paseo Marítimo Pablo Ruiz Picasso, Málaga",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d7-p3",
+          "time": "18:30",
+          "title": "[Öppen slot: Strosa vid Muelle Uno & Calle Larios]",
+          "category": "placeholder",
+          "notes": "Marinan och gågatan i solnedgången",
+          "address": "Paseo del Muelle Uno, 29016 Málaga",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d7-4",
+          "time": "20:30",
+          "title": "MIDDAG: Grillade espetos på strand-chiringuito",
+          "category": "food",
+          "notes": "Sardiner grillade på spett över öppen eld vid stranden!",
+          "address": "",
+          "link": "",
+          "completed": false
+        }
       ]
     },
     {
@@ -161,11 +620,56 @@
       "city": "Málaga",
       "summary": "Sista förmiddagen & flyg hem",
       "items": [
-        { "id": "d8-1", "time": "09:30", "title": "Frukost på hotellet (ingår)", "category": "food", "notes": "Njut av sista förmiddagen", "address": "", "link": "", "completed": false },
-        { "id": "d8-p1", "time": "10:30", "title": "[Öppen slot: Promenad vid Alcazaba / Gamla stan]", "category": "placeholder", "notes": "Panoramavy över staden om tid finns", "address": "Calle Alcazabilla, 2, 29012 Málaga", "link": "", "completed": false },
-        { "id": "d8-2", "time": "12:00", "title": "Snabb tapas vid hamnen", "category": "food", "notes": "Enkelt och smidigt innan taxi", "address": "", "link": "", "completed": false },
-        { "id": "d8-3", "time": "12:30", "title": "Taxi till Málaga flygplats (AGP)", "category": "transport", "notes": "Ca 15–20 min körtid", "address": "", "link": "", "completed": false },
-        { "id": "d8-4", "time": "13:00", "title": "Var på flygplatsen (2h innan)", "category": "transport", "notes": "Flyget avgår kl 15:00 mot Landvetter", "address": "Avenida del Comandante García Morato, 29004 Málaga", "link": "", "completed": false }
+        {
+          "id": "d8-1",
+          "time": "09:30",
+          "title": "Frukost på hotellet (ingår)",
+          "category": "food",
+          "notes": "Njut av sista förmiddagen",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d8-p1",
+          "time": "10:30",
+          "title": "[Öppen slot: Promenad vid Alcazaba / Gamla stan]",
+          "category": "placeholder",
+          "notes": "Panoramavy över staden om tid finns",
+          "address": "Calle Alcazabilla, 2, 29012 Málaga",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d8-2",
+          "time": "12:00",
+          "title": "Snabb tapas vid hamnen",
+          "category": "food",
+          "notes": "Enkelt och smidigt innan taxi",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d8-3",
+          "time": "12:30",
+          "title": "Taxi till Málaga flygplats (AGP)",
+          "category": "transport",
+          "notes": "Ca 15–20 min körtid",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d8-4",
+          "time": "13:00",
+          "title": "Var på flygplatsen (2h innan)",
+          "category": "transport",
+          "notes": "Flyget avgår kl 15:00 mot Landvetter",
+          "address": "Avenida del Comandante García Morato, 29004 Málaga",
+          "link": "",
+          "completed": false
+        }
       ]
     }
   ],

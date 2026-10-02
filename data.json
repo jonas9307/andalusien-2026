@@ -153,23 +153,13 @@
           "completed": false
         },
         {
-          "id": "d2-p1",
-          "time": "12:15",
-          "title": "[Öppen slot: Stadsspaning i Triana / Kaffe]",
-          "category": "placeholder",
-          "notes": "Kolla kvarteret runt hotellet innan lunch",
-          "address": "",
-          "link": "",
-          "completed": true
-        },
-        {
           "id": "d2-4",
           "time": "13:00",
           "title": "BOKAT LUNCH - Espacio Eslava (13:00–15:00)",
           "category": "food",
           "notes": "DE HÖR AV SIG NÅGON DAG INNAN FÖR ATT BEKRÄFTA IGEN, SVARA ANNARS AVBOKAS DEN!",
           "address": "C. Eslava, 3, Casco Antiguo, 41002 Sevilla, Spanien",
-          "link": "MENY",
+          "link": "https://espacioeslava.com/wp-content/uploads/2026/02/CARTA_ESLAVA.pdf",
           "completed": false
         },
         {

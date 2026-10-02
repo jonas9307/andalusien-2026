@@ -135,9 +135,9 @@
         {
           "id": "d2-2",
           "time": "09:12",
-          "title": "Snabbtåg Málaga -> Sevilla (Santa Justa)",
+          "title": "Snabbtåg Málaga -> Sevilla (09:12-11:19)",
           "category": "transport",
-          "notes": "Framme 11:19",
+          "notes": "Ca 15 min från hotellet att gå!",
           "address": "Calle Joaquín Morales y Torres, 41007 Sevilla",
           "link": "",
           "completed": false
@@ -165,12 +165,12 @@
         {
           "id": "d2-p2",
           "time": "15:00",
-          "title": "[Öppen slot: Poolhäng / Siesta på hotellet]",
+          "title": "Fri lek, checka in på hotellet om vi vill. Ca 30 min gång dock!",
           "category": "placeholder",
           "notes": "Skön eftermiddagsvärme vid poolen",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d2-5",
@@ -212,13 +212,13 @@
       "items": [
         {
           "id": "d3-1",
-          "time": "09:30",
-          "title": "Frukost på hotellet (ingår)",
+          "time": "07:30",
+          "title": "Frukost på hotellet",
           "category": "food",
-          "notes": "Frukostbuffé på Monte Triana",
+          "notes": "Frukostbuffé på Monte Triana. Öppet mellan 07:30 - 11:30.",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d3-p1",
@@ -300,13 +300,13 @@
       "items": [
         {
           "id": "d4-1",
-          "time": "09:30",
-          "title": "Frukost på hotellet (ingår)",
+          "time": "07:30",
+          "title": "Frukost på hotellet",
           "category": "food",
-          "notes": "Frukostbuffé på Monte Triana",
+          "notes": "Frukostbuffé på Monte Triana. Öppet mellan 07:30 - 11:30.",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d4-p1",
@@ -378,13 +378,13 @@
       "items": [
         {
           "id": "d5-1",
-          "time": "09:30",
-          "title": "Frukost på hotellet (ingår)",
+          "time": "07:30",
+          "title": "Frukost på hotellet",
           "category": "food",
-          "notes": "Frukostbuffé på Monte Triana",
+          "notes": "Frukostbuffé på Monte Triana. Öppet mellan 07:30 - 11:30.",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d5-2",
@@ -466,13 +466,13 @@
       "items": [
         {
           "id": "d6-1",
-          "time": "09:30",
-          "title": "Frukost på hotellet (ingår)",
+          "time": "07:00",
+          "title": "Frukost på hotellet",
           "category": "food",
-          "notes": "Frukostbuffé på Monte Triana",
+          "notes": "Frukostbuffé på Monte Triana. Öppet mellan 07:00 - 11:00.",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d6-p1",
@@ -534,13 +534,13 @@
       "items": [
         {
           "id": "d7-1",
-          "time": "09:30",
-          "title": "Frukost på hotellet (ingår)",
+          "time": "07:00",
+          "title": "Ta med frukost från hotellet, om det går.",
           "category": "food",
-          "notes": "Frukost och utcheckning",
+          "notes": "Öppet mellan 07:00 - 11:00.",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d7-p1",

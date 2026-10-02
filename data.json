@@ -123,14 +123,24 @@
       "summary": "Tåg till Sevilla, Hotel Monte Triana & Walking Tour",
       "items": [
         {
+          "id": "item-1790954357262",
+          "time": "08:30",
+          "category": "transport",
+          "title": "Gå till tågstationen",
+          "notes": "Address till tågstationen i Maps",
+          "address": "Explanada de la Estación, S/N, Distrito Centro, Distrito Centro, 29002 Málaga, Spanien",
+          "link": "",
+          "completed": false
+        },
+        {
           "id": "d2-1",
-          "time": "08:15",
-          "title": "Frukost på hotellet (ingår)",
+          "time": "08:45",
+          "title": "Köp frukost på tågstationen att äta på tåget",
           "category": "food",
           "notes": "Frukost innan tåget",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d2-2",
@@ -138,7 +148,7 @@
           "title": "Snabbtåg Málaga -> Sevilla (09:12-11:19)",
           "category": "transport",
           "notes": "Ca 15 min från hotellet att gå!",
-          "address": "Calle Joaquín Morales y Torres, 41007 Sevilla",
+          "address": "Renfe Sta. Justa, 41008 Sevilla, Spanien",
           "link": "",
           "completed": false
         },

@@ -99,20 +99,20 @@
           "time": "00:15",
           "title": "Taxi till hotellet",
           "category": "transport",
-          "notes": "Officiell taxikö utanför terminalen",
+          "notes": "Ta en taxi utanför bara. Annars går det också billiga snabba tåg varje halvtimme, se länk. Man kan betala med vanlig betalkort bara.",
           "address": "",
-          "link": "",
+          "link": "https://www.renfe.com/es/en/suburban/suburban-malaga/timetables#/list?tripType=station&originInputValue=100054505&originInputText=Aeropuerto&destinationInputValue=100054500&destinationInputText=M%C3%A1laga-Mar%C3%ADa+Zambrano&tripPreferences=todas&whenToDepartType=3&deptDate=08-10-2026&deptTime=23%3A20",
           "completed": false
         },
         {
           "id": "d1-6",
           "time": "00:35",
-          "title": "Checka in på hotell i Málaga",
+          "title": "Checka in på hotell i Málaga (Casual Málaga del Mar)",
           "category": "hotel",
-          "notes": "OBOKAT! Välj boende nära tågstationen María Zambrano",
-          "address": "",
-          "link": "",
-          "completed": true
+          "notes": "Bokningsreferens: BDDFD50F1",
+          "address": "Av. de la Aurora, 9, Distrito Centro, 29002 Málaga, Spanien",
+          "link": "https://www.casualhoteles.com/en/checkin-online.html",
+          "completed": false
         }
       ]
     },

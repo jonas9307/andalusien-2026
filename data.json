@@ -553,14 +553,14 @@
           "completed": false
         },
         {
-          "id": "d7-p1",
-          "time": "10:30",
-          "title": "[Öppen slot: Sista strosandet i Sevilla]",
-          "category": "placeholder",
-          "notes": "Köp souvenirer eller ta en kaffe innan tåget",
+          "id": "item-1791145888519",
+          "time": "07:10",
+          "category": "transport",
+          "title": "TAXI till Tågstationen",
+          "notes": "Bör ha bokat via receptionen dagen innan typ",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d7-2",
@@ -575,10 +575,10 @@
         {
           "id": "d7-3",
           "time": "15:30",
-          "title": "Incheckning hotell i Málaga",
+          "title": "Checka in på Hotel Sallés Málaga Centro",
           "category": "hotel",
-          "notes": "Sista natten vid havet",
-          "address": "",
+          "notes": "",
+          "address": "C. Mármoles, 6, Distrito Centro, 29007 Málaga, Spanien",
           "link": "",
           "completed": false
         },

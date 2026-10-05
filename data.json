@@ -79,7 +79,7 @@
           "time": "20:00",
           "title": "Flyget avgår mot Málaga (GOT -> AGP)",
           "category": "transport",
-          "notes": "BOKAT ✅",
+          "notes": "19:30 Boarding",
           "address": "",
           "link": "",
           "completed": false
@@ -177,7 +177,7 @@
           "time": "15:00",
           "title": "Fri lek, checka in på hotellet om vi vill. Ca 30 min gång dock!",
           "category": "placeholder",
-          "notes": "Skön eftermiddagsvärme vid poolen",
+          "notes": "",
           "address": "",
           "link": "",
           "completed": false
@@ -232,13 +232,13 @@
         },
         {
           "id": "d3-p1",
-          "time": "10:30",
-          "title": "[Öppen slot: Poolförmiddag / Vila]",
+          "time": "12:30",
+          "title": "Köp lite proviant att ha i ryggsäck under dagen",
           "category": "placeholder",
-          "notes": "Slappa vid hotellpoolen i solen",
+          "notes": "",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d3-2",
@@ -248,14 +248,14 @@
           "notes": "Ät nära Santa Cruz före Alcázar",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d3-3",
           "time": "14:30",
-          "title": "Real Alcázar (Kungliga Palatset)",
+          "title": "Real Alcázar",
           "category": "sight",
-          "notes": "BOKAT KL 14:30 ✅ Morisk arkitektur och trädgårdar",
+          "notes": "Kungliga Palatset",
           "address": "Patio de Banderas, s/n, 41004 Sevilla",
           "link": "",
           "completed": false
@@ -273,9 +273,9 @@
         {
           "id": "d3-4",
           "time": "17:05",
-          "title": "Katedralen i Sevilla & La Giralda",
+          "title": "Katedralen i Sevilla & La Giralda (klocktorn)",
           "category": "sight",
-          "notes": "BOKAT KL 17:05 ✅ Klättra upp i klocktornet",
+          "notes": "Kolla katedralen, klättra upp i klocktornet först dock!",
           "address": "Avenida de la Constitución, s/n, 41004 Sevilla",
           "link": "",
           "completed": false
@@ -353,7 +353,7 @@
           "time": "18:30",
           "title": "FOTBOLL: Real Betis – Osasuna",
           "category": "sight",
-          "notes": "BOKAT KL 18:30 ✅ Kom i god tid!",
+          "notes": "Kom i god tid!",
           "address": "Avenida de Heliópolis, s/n, 41012 Sevilla",
           "link": "",
           "completed": false
@@ -543,16 +543,6 @@
       "summary": "Tåg till Málaga, stranden & grillade espetos",
       "items": [
         {
-          "id": "d7-1",
-          "time": "07:00",
-          "title": "Ta med frukost från hotellet, om det går.",
-          "category": "food",
-          "notes": "Öppet mellan 07:00 - 11:00.",
-          "address": "",
-          "link": "",
-          "completed": false
-        },
-        {
           "id": "item-1791145888519",
           "time": "07:10",
           "category": "transport",
@@ -563,34 +553,44 @@
           "completed": false
         },
         {
+          "id": "d7-1",
+          "time": "07:30",
+          "title": "Ta med frukost från hotellet, om det går.",
+          "category": "food",
+          "notes": "Öppet mellan 07:00 - 11:00.",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
           "id": "d7-2",
           "time": "07:51",
           "title": "Snabbtåg Sevilla -> Málaga",
           "category": "transport",
-          "notes": "Framme 15:16 (Alt: 07:51–10:02)",
+          "notes": "07:51–10:02",
           "address": "Calle Joaquín Morales y Torres, 41007 Sevilla",
           "link": "",
           "completed": false
         },
         {
-          "id": "d7-3",
-          "time": "15:30",
-          "title": "Checka in på Hotel Sallés Málaga Centro",
-          "category": "hotel",
-          "notes": "",
-          "address": "C. Mármoles, 6, Distrito Centro, 29007 Málaga, Spanien",
-          "link": "",
-          "completed": false
-        },
-        {
           "id": "d7-p2",
-          "time": "16:30",
+          "time": "10:02",
           "title": "[Öppen slot: Strandhäng Playa de La Malagueta]",
           "category": "placeholder",
           "notes": "Dopp i havet & strandpromenad",
           "address": "Paseo Marítimo Pablo Ruiz Picasso, Málaga",
           "link": "",
           "completed": true
+        },
+        {
+          "id": "d7-3",
+          "time": "14:00",
+          "title": "Checka in på Hotel Sallés Málaga Centro",
+          "category": "hotel",
+          "notes": "",
+          "address": "C. Mármoles, 6, Distrito Centro, 29007 Málaga, Spanien",
+          "link": "",
+          "completed": false
         },
         {
           "id": "d7-p3",
@@ -622,13 +622,13 @@
       "items": [
         {
           "id": "d8-1",
-          "time": "09:30",
-          "title": "Frukost på hotellet (ingår)",
+          "time": "07:30",
+          "title": "Frukost på hotellet",
           "category": "food",
-          "notes": "Njut av sista förmiddagen",
+          "notes": "Öppet mellan 07:30-10:30",
           "address": "",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d8-p1",

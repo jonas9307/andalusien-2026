@@ -487,12 +487,12 @@
         {
           "id": "d6-p1",
           "time": "10:30",
-          "title": "[Öppen slot: Cádiz, Itálica eller Sevilla]",
+          "title": "Båt-tur 1h, eller chilla?",
           "category": "placeholder",
-          "notes": "Förslag: Dagsutflykt till kusten i Cádiz, amfiteatern i Itálica eller lugn dag i Sevilla",
+          "notes": "Chilla. Alt båt-tur 1h i floden, men verkar inte helt otroligt. Men om man är sugen på båt så är man, se länk!",
           "address": "",
-          "link": "",
-          "completed": true
+          "link": "https://guadaluxe.com/en/boat-trips/",
+          "completed": false
         },
         {
           "id": "d6-2",

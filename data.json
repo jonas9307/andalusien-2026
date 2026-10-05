@@ -564,13 +564,13 @@
         },
         {
           "id": "d7-2",
-          "time": "13:08",
+          "time": "07:51",
           "title": "Snabbtåg Sevilla -> Málaga",
           "category": "transport",
-          "notes": "OBOKAT! Framme 15:16 (Alt: 07:51–10:02)",
+          "notes": "Framme 15:16 (Alt: 07:51–10:02)",
           "address": "Calle Joaquín Morales y Torres, 41007 Sevilla",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d7-3",

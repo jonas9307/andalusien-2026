@@ -525,6 +525,16 @@
           "completed": true
         },
         {
+          "id": "item-1791229651473",
+          "time": "19:30",
+          "category": "sight",
+          "title": "Setas de Sevilla",
+          "notes": "Träskulptur över staden. Bokad tid 19:30",
+          "address": "Pl. de la Encarnación, s/n, Casco Antiguo, 41003 Sevilla, Spanien",
+          "link": "",
+          "completed": false
+        },
+        {
           "id": "d6-3",
           "time": "21:00",
           "title": "MIDDAG (BOKA!)",

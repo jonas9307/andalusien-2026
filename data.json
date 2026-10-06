@@ -583,8 +583,18 @@
           "completed": false
         },
         {
-          "id": "d7-p2",
+          "id": "item-1791291534714",
           "time": "10:02",
+          "category": "transport",
+          "title": "Gå till hotellet och lämna våra väskor (15 min gång)",
+          "notes": "",
+          "address": "",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d7-p2",
+          "time": "10:20",
           "title": "[Öppen slot: Strandhäng Playa de La Malagueta]",
           "category": "placeholder",
           "notes": "Dopp i havet & strandpromenad",

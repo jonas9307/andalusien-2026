@@ -485,11 +485,21 @@
           "completed": false
         },
         {
-          "id": "d6-p1",
-          "time": "10:30",
-          "title": "Båt-tur 1h, eller chilla?",
+          "id": "d6-p2",
+          "time": "10:00",
+          "title": "FÖRSLAG: Italica. (Öppet mellan 09–14:30)",
           "category": "placeholder",
-          "notes": "Chilla. Alt båt-tur 1h i floden, men verkar inte helt otroligt. Men om man är sugen på båt så är man, se länk!",
+          "notes": "Romerska ruiner. Game of Thrones spelades in här! Öppet mellan 09–14:30.",
+          "address": "Av. Extremadura, 2, 41970 Santiponce, Sevilla, Spanien",
+          "link": "",
+          "completed": false
+        },
+        {
+          "id": "d6-p1",
+          "time": "10:00",
+          "title": "Förslag: Båt-tur",
+          "category": "placeholder",
+          "notes": "Båt-tur 1h i floden, men verkar inte helt otroligt. Men om man är sugen på båt så är man, se länk!",
           "address": "",
           "link": "https://guadaluxe.com/en/boat-trips/",
           "completed": false
@@ -500,16 +510,6 @@
           "title": "LUNCH (13:30–15:00)",
           "category": "food",
           "notes": "Långlunch",
-          "address": "",
-          "link": "",
-          "completed": true
-        },
-        {
-          "id": "d6-p2",
-          "time": "15:30",
-          "title": "[Öppen slot: Pool / Siesta]",
-          "category": "placeholder",
-          "notes": "Eftermiddagssol vid hotellet",
           "address": "",
           "link": "",
           "completed": true

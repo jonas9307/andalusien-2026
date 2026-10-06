@@ -515,14 +515,14 @@
           "completed": true
         },
         {
-          "id": "d6-p3",
-          "time": "18:00",
-          "title": "[Öppen slot: Flamenco-show eller Setas de Sevilla]",
-          "category": "placeholder",
-          "notes": "Förslag: Boka Teatro Flamenco Triana eller solnedgång på Setas de Sevilla",
-          "address": "",
+          "id": "item-1791266338434",
+          "time": "17:45",
+          "category": "sight",
+          "title": "Flamenco Show",
+          "notes": "Tablao Flamenco Las Setas. Börjar kl 18, dörrarna då. Var i tid. 15 min innan är rekommenderat.",
+          "address": "Setas de Sevilla, Pl. de la Encarnación, Casco Antiguo, 41003 Sevilla, Spanien",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "item-1791229651473",

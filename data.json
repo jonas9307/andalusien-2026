@@ -864,5 +864,22 @@
       "lng": -5.9926,
       "specialty": "Drink med magisk utsikt rakt mot Katedralen och Giralda"
     }
+  ],
+  "todos": [
+    {
+      "id": "todo-1",
+      "text": "Be hotellet (i Sevilla) att boka taxi till tåget till Málaga",
+      "done": false
+    },
+    {
+      "id": "todo-2",
+      "text": "Fråga om frukostbag to-go inför resan Sevilla ➔ Málaga",
+      "done": false
+    },
+    {
+      "id": "todo-1791281711791",
+      "text": "Skaffa cash. Kanske 100 EURO. \"Without conversion\" / EUR. ABANCA, Unicaja Banco, Banco Sabadell. I den ordningen för bäst avgift.",
+      "done": false
+    }
   ]
 }

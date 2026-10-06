@@ -241,11 +241,7 @@
       user-select: none;
     }
     .day-header:hover { background: rgba(148, 163, 184, 0.12); }
-    .day-header-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .day-header-left { display: flex; align-items: center; gap: 10px; }
     .day-fold-indicator {
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -268,9 +264,7 @@
     .city-badge.cordoba { background: var(--city-cordoba-bg); color: var(--city-cordoba); }
 
     .day-card.day-collapsed .day-items-list,
-    .day-card.day-collapsed .add-item-bar {
-      display: none;
-    }
+    .day-card.day-collapsed .add-item-bar { display: none; }
     .day-card.day-collapsed .day-fold-indicator { transform: rotate(-90deg); }
     .day-card.day-collapsed { margin-bottom: 0.65rem; }
 
@@ -373,14 +367,8 @@
     .item-link-edit:empty::before { content: "+ Lägg till länk..."; opacity: 0.45; font-style: italic; cursor: text; }
 
     .item-fold-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 0.9rem;
-      padding: 4px;
-      line-height: 1;
-      border-radius: 4px;
+      background: none; border: none; color: var(--text-muted);
+      cursor: pointer; font-size: 0.9rem; padding: 4px; line-height: 1; border-radius: 4px;
       transition: transform 0.2s ease, color 0.15s;
     }
     .item-fold-btn:hover { color: var(--primary); background: var(--surface-subtle); }
@@ -422,7 +410,7 @@
     }
     .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-    /* SEKTION: TODO / ATT GÖRA PÅ PLATS */
+    /* TODO */
     .todo-panel {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -430,47 +418,64 @@
       padding: 14px;
       margin-bottom: 1.25rem;
     }
-    .todo-add-form {
-      display: flex;
-      gap: 8px;
-    }
+    .todo-add-form { display: flex; gap: 8px; }
     .todo-add-form input {
-      flex: 1;
-      padding: 8px 12px;
-      background: var(--surface-subtle);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text);
-      font-size: 0.85rem;
+      flex: 1; padding: 8px 12px; background: var(--surface-subtle);
+      border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 0.85rem;
     }
     .todo-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 12px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px;
+    }
+    .todo-row.completed { opacity: 0.5; }
+    .todo-row.completed .todo-text { text-decoration: line-through; }
+    .todo-checkbox { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+    .todo-text { flex: 1; font-size: 0.92rem; outline: none; }
+
+    /* FILTERS FÖR MAT & KARTA */
+    .filter-section {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 12px 14px;
+      margin-bottom: 1rem;
+    }
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
       margin-bottom: 8px;
-      transition: opacity 0.2s;
+      align-items: center;
     }
-    .todo-row.completed {
-      opacity: 0.5;
+    .filter-group:last-child { margin-bottom: 0; }
+    .filter-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-right: 4px;
+      min-width: 50px;
     }
-    .todo-row.completed .todo-text {
-      text-decoration: line-through;
-    }
-    .todo-checkbox {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--primary);
+    .filter-chip {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
       cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
     }
-    .todo-text {
-      flex: 1;
-      font-size: 0.92rem;
-      outline: none;
-      word-break: break-word;
+    .filter-chip:hover {
+      border-color: var(--primary);
+    }
+    .filter-chip.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
     }
 
     /* Karta & Restauranger */
@@ -494,9 +499,15 @@
       gap: 12px;
     }
     .tag {
-      font-size: 0.7rem; padding: 2px 6px; border-radius: 4px;
+      font-size: 0.7rem; padding: 2px 7px; border-radius: 4px;
       background: var(--surface-subtle); color: var(--text-muted); border: 1px solid var(--border);
+      font-weight: 600;
     }
+    .tag-meat { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+    .tag-fish { background: #e0f2fe; color: #075985; border-color: #bae6fd; }
+    .tag-jamon { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+    .tag-finedining { background: #f3e8ff; color: #6b21a8; border-color: #e9d5ff; }
+
     .restaurant-addr { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
     .maps-link-btn {
       background: #ea4335; color: #fff; text-decoration: none;
@@ -562,21 +573,10 @@
       gap: 12px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    .doc-card-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex: 1;
-      min-width: 0;
-    }
+    .doc-card-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
     .doc-color-badge input[type="color"] {
-      width: 24px;
-      height: 24px;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      background: transparent;
-      padding: 0;
+      width: 24px; height: 24px; border: none; border-radius: 50%;
+      cursor: pointer; background: transparent; padding: 0;
     }
     .doc-info { display: flex; flex-direction: column; min-width: 0; }
     .doc-title { font-weight: 600; font-size: 0.92rem; outline: none; }
@@ -597,7 +597,7 @@
       white-space: nowrap;
     }
 
-    /* FLOTERANDE SPARA-BAR I HÖRNET */
+    /* SPARA-BANNER */
     .save-banner {
       position: fixed;
       bottom: 20px;
@@ -635,55 +635,29 @@
     }
     .save-banner-btn:hover { background: #c2410c; }
     .save-banner-gear {
-      background: none;
-      border: none;
-      color: #94a3b8;
-      cursor: pointer;
-      font-size: 1rem;
-      padding: 2px;
+      background: none; border: none; color: #94a3b8;
+      cursor: pointer; font-size: 1rem; padding: 2px;
     }
 
-    /* Modal för GitHub-inställningar */
     .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(2px);
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
+      z-index: 2000; display: none; align-items: center; justify-content: center; padding: 1rem;
     }
     .modal-overlay.active { display: flex; }
     .modal-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      width: 100%;
-      max-width: 440px;
-      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; width: 100%; max-width: 440px;
     }
     .modal-box h3 { font-size: 1rem; margin-bottom: 8px; }
     .modal-box p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; }
     .modal-field { margin-bottom: 12px; }
     .modal-field label { display: block; font-size: 0.75rem; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; color: var(--text-muted); }
     .modal-field input {
-      width: 100%;
-      padding: 8px 10px;
-      background: var(--surface-subtle);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text);
-      font-size: 0.85rem;
+      width: 100%; padding: 8px 10px; background: var(--surface-subtle);
+      border: 1px solid var(--border); border-radius: 6px; color: var(--text); font-size: 0.85rem;
     }
-    .modal-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-      margin-top: 16px;
-    }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
   </style>
 </head>
 <body>
@@ -737,13 +711,59 @@
 
     <!-- FLIK 3: KARTA & MAT -->
     <div id="tab-restaurants" class="tab-pane">
-      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:12px; margin-bottom:1rem;">
-        <h3 style="font-size:0.95rem; margin-bottom:4px;">🗺️ Interaktiv Restaurang- & Platskarta</h3>
-        <p style="font-size:0.8rem; color:var(--text-muted);">
-          Kartan visar alla restauranger och Hotel Monte Triana. Klicka på en markör för att öppna den direkt i Google Maps.
-        </p>
+      
+      <!-- INTERAKTIV FILTERPANEL -->
+      <div class="filter-section">
+        <div class="filter-group">
+          <span class="filter-label">Typ:</span>
+          <span class="filter-chip active" data-type="all" onclick="setTypeFilter('all')">Alla</span>
+          <span class="filter-chip" data-type="tapas" onclick="setTypeFilter('tapas')">🍷 Tapas</span>
+          <span class="filter-chip" data-type="restaurang" onclick="setTypeFilter('restaurang')">🍽️ Restaurang</span>
+          <span class="filter-chip" data-type="finedining" onclick="setTypeFilter('finedining')">✨ Fine dining</span>
+          <span class="filter-chip" data-type="vinbar" onclick="setTypeFilter('vinbar')">🍇 Vinbar / Abacería</span>
+          <span class="filter-chip" data-type="saluhall" onclick="setTypeFilter('saluhall')">🏛️ Saluhall</span>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">Fokus:</span>
+          <span class="filter-chip active" data-food="all" onclick="setFoodFilter('all')">Allt</span>
+          <span class="filter-chip" data-food="kött" onclick="setFoodFilter('kött')">🥩 Kött / Asador</span>
+          <span class="filter-chip" data-food="fisk" onclick="setFoodFilter('fisk')">🐟 Fisk & Skaldjur</span>
+          <span class="filter-chip" data-food="jamon" onclick="setFoodFilter('jamon')">🥓 Jamón Ibérico</span>
+          <span class="filter-chip" data-food="vin" onclick="setFoodFilter('vin')">🍷 Vin & Sherry</span>
+        </div>
       </div>
+
+      <!-- KARTAN -->
       <div id="mapContainer"></div>
+
+      <!-- FORMULÄR: LÄGG TILL NYTT MATSTÄLLE -->
+      <div class="todo-panel" style="margin-bottom:1rem;">
+        <h4 style="font-size:0.9rem; margin-bottom:8px;">➕ Lägg till nytt matställe i Sevilla</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+          <input type="text" id="newRestName" placeholder="Namn (t.ex. Bodega El Rincón)" style="padding:7px; border:1px solid var(--border); border-radius:6px; background:var(--surface-subtle); color:var(--text); font-size:0.85rem;">
+          <input type="text" id="newRestAddr" placeholder="Adress (t.ex. Calle Sierpes, 12)" style="padding:7px; border:1px solid var(--border); border-radius:6px; background:var(--surface-subtle); color:var(--text); font-size:0.85rem;">
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:8px; align-items:center;">
+          <select id="newRestType" style="padding:7px; border:1px solid var(--border); border-radius:6px; background:var(--surface-subtle); color:var(--text); font-size:0.85rem;">
+            <option value="tapas">Typ: Tapasbar</option>
+            <option value="restaurang">Typ: Restaurang</option>
+            <option value="finedining">Typ: Fine dining</option>
+            <option value="vinbar">Typ: Vinbar / Abacería</option>
+            <option value="saluhall">Typ: Saluhall</option>
+          </select>
+          <select id="newRestFood" style="padding:7px; border:1px solid var(--border); border-radius:6px; background:var(--surface-subtle); color:var(--text); font-size:0.85rem;">
+            <option value="allt">Fokus: Allt / Blandat</option>
+            <option value="kött">Fokus: Kött</option>
+            <option value="fisk">Fokus: Fisk & Skaldjur</option>
+            <option value="jamon">Fokus: Jamón / Chark</option>
+            <option value="vin">Fokus: Vin & Sherry</option>
+          </select>
+          <input type="text" id="newRestNotes" placeholder="Specialitet / Anteckning" style="padding:7px; border:1px solid var(--border); border-radius:6px; background:var(--surface-subtle); color:var(--text); font-size:0.85rem;">
+          <button class="btn btn-primary" onclick="addNewRestaurant()">+ Spara</button>
+        </div>
+      </div>
+
+      <!-- LISTA ÖVER STÄLLEN -->
       <div id="restaurantsContainer"></div>
     </div>
 
@@ -781,13 +801,13 @@
 
   </div>
 
-  <!-- DISKRET FLYTANDE SPARA-BANNER I HÖRNET -->
+  <!-- FLYTANDE SPARA-BANNER -->
   <div id="saveBanner" class="save-banner">
     <span id="saveBannerText">⚠️ Osparade ändringar</span>
     <button class="save-banner-btn" onclick="saveToGitHub()" id="saveBtnAction">
       ☁️ Spara till GitHub
     </button>
-    <button class="save-banner-gear" onclick="openGithubModal()" title="Inställningar">⚙️️</button>
+    <button class="save-banner-gear" onclick="openGithubModal()" title="Inställningar">⚙</button>
   </div>
 
   <!-- MODAL: GITHUB API INSTÄLLNINGAR -->
@@ -819,17 +839,15 @@
   <script>
     let tripData = null;
     let leafletMap = null;
+    let mapMarkers = [];
     let hasUnsavedChanges = false;
-    const STORAGE_KEY = "andalusien_trip_data_v11";
+    const STORAGE_KEY = "andalusien_trip_data_v12";
+
+    let activeTypeFilter = "all";
+    let activeFoodFilter = "all";
 
     let collapsedDaysState = JSON.parse(localStorage.getItem("ui_collapsed_days") || "{}");
     let collapsedItemsState = JSON.parse(localStorage.getItem("ui_collapsed_items") || "{}");
-
-    // Standard-TODOs om inga sparats än
-    const DEFAULT_TODOS = [
-      { id: "todo-1", text: "Be hotellet (i Sevilla) att boka taxi till tåget till Málaga", done: false },
-      { id: "todo-2", text: "Fråga om frukostbag to-go inför resan Sevilla ➔ Málaga", done: false }
-    ];
 
     const DEFAULT_DOCS = [
       { id: "doc-1", title: "Tåg: Sevilla ➔ Málaga T/R", filename: "sevilla-malaga-train-tur-och-retur.pdf", color: "#0284c7" },
@@ -909,9 +927,7 @@
       collapsedDaysState[dayId] = !collapsedDaysState[dayId];
       localStorage.setItem("ui_collapsed_days", JSON.stringify(collapsedDaysState));
       const card = document.getElementById(`card-${dayId}`);
-      if (card) {
-        card.classList.toggle("day-collapsed", collapsedDaysState[dayId]);
-      }
+      if (card) card.classList.toggle("day-collapsed", collapsedDaysState[dayId]);
     }
 
     function collapseAllDays() {
@@ -931,33 +947,24 @@
       collapsedItemsState[itemId] = !collapsedItemsState[itemId];
       localStorage.setItem("ui_collapsed_items", JSON.stringify(collapsedItemsState));
       const row = document.getElementById(`row-${itemId}`);
-      if (row) {
-        row.classList.toggle("item-collapsed", collapsedItemsState[itemId]);
-      }
+      if (row) row.classList.toggle("item-collapsed", collapsedItemsState[itemId]);
     }
 
     function toggleAllItemsCollapse() {
       const anyExpanded = tripData.days.some(d => d.items.some(it => !collapsedItemsState[it.id]));
       tripData.days.forEach(d => {
-        d.items.forEach(it => {
-          collapsedItemsState[it.id] = anyExpanded;
-        });
+        d.items.forEach(it => { collapsedItemsState[it.id] = anyExpanded; });
       });
       localStorage.setItem("ui_collapsed_items", JSON.stringify(collapsedItemsState));
       renderSchedule();
     }
 
-    // TODO HANTERING
     function addTodo() {
       const input = document.getElementById("todoInput");
       const text = input.value.trim();
       if (!text) return;
       if (!tripData.todos) tripData.todos = [];
-      tripData.todos.push({
-        id: "todo-" + Date.now(),
-        text: text,
-        done: false
-      });
+      tripData.todos.push({ id: "todo-" + Date.now(), text: text, done: false });
       input.value = "";
       markUnsaved();
       renderTodos();
@@ -1003,7 +1010,160 @@
       });
     }
 
-    // SYNKKONTROLLER & GITHUB
+    /* FILTRERING AV MATSTÄLLEN */
+    function setTypeFilter(type) {
+      activeTypeFilter = type;
+      document.querySelectorAll("[data-type]").forEach(el => {
+        el.classList.toggle("active", el.getAttribute("data-type") === type);
+      });
+      renderRestaurants();
+      updateMapMarkers();
+    }
+
+    function setFoodFilter(food) {
+      activeFoodFilter = food;
+      document.querySelectorAll("[data-food]").forEach(el => {
+        el.classList.toggle("active", el.getAttribute("data-food") === food);
+      });
+      renderRestaurants();
+      updateMapMarkers();
+    }
+
+    function getFilteredRestaurants() {
+      if (!tripData || !tripData.restaurants) return [];
+      return tripData.restaurants.filter(r => {
+        const matchType = (activeTypeFilter === "all") || (r.typeTag === activeTypeFilter);
+        const matchFood = (activeFoodFilter === "all") || (r.foodTag === activeFoodFilter);
+        return matchType && matchFood;
+      });
+    }
+
+    function addNewRestaurant() {
+      const name = document.getElementById("newRestName").value.trim();
+      const addr = document.getElementById("newRestAddr").value.trim();
+      const typeTag = document.getElementById("newRestType").value;
+      const foodTag = document.getElementById("newRestFood").value;
+      const notes = document.getElementById("newRestNotes").value.trim();
+
+      if (!name) { alert("Ange ett namn på stället!"); return; }
+
+      const typeLabels = {
+        tapas: "Tapasbar",
+        restaurang: "Restaurang",
+        finedining: "Fine dining",
+        vinbar: "Vinbar / Abacería",
+        saluhall: "Saluhall"
+      };
+
+      tripData.restaurants.push({
+        id: "r-" + Date.now(),
+        name: name,
+        city: "Sevilla",
+        neighborhood: "Sevilla",
+        type: typeLabels[typeTag] || "Restaurang",
+        typeTag: typeTag,
+        foodTag: foodTag,
+        address: addr || "Sevilla",
+        lat: 37.3880 + (Math.random() - 0.5) * 0.015,
+        lng: -5.9960 + (Math.random() - 0.5) * 0.015,
+        specialty: notes || "Trevligt matställe"
+      });
+
+      document.getElementById("newRestName").value = "";
+      document.getElementById("newRestAddr").value = "";
+      document.getElementById("newRestNotes").value = "";
+
+      markUnsaved();
+      renderRestaurants();
+      updateMapMarkers();
+    }
+
+    function initMap() {
+      if (!tripData || !tripData.restaurants) return;
+      if (leafletMap) return;
+
+      leafletMap = L.map('mapContainer').setView([37.388, -5.996], 14);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(leafletMap);
+
+      updateMapMarkers();
+    }
+
+    function updateMapMarkers() {
+      if (!leafletMap) return;
+      mapMarkers.forEach(m => leafletMap.removeLayer(m));
+      mapMarkers = [];
+
+      const filtered = getFilteredRestaurants();
+
+      filtered.forEach(rest => {
+        if (!rest.lat || !rest.lng) return;
+
+        const isHotel = rest.typeTag === 'hotell';
+        const gmapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rest.name + ' ' + (rest.address || 'Sevilla'))}`;
+
+        const marker = L.marker([rest.lat, rest.lng]).addTo(leafletMap);
+        marker.bindPopup(`
+          <div style="font-family:sans-serif; min-width:190px;">
+            <strong style="font-size:0.95rem; color:#0f172a;">${isHotel ? '🏨 ' : '🥘 '}${rest.name}</strong><br>
+            <span style="font-size:0.75rem; color:#64748b;">${rest.type} • ${rest.neighborhood}</span><br>
+            <p style="font-size:0.8rem; margin:6px 0;">${rest.specialty || ''}</p>
+            <p style="font-size:0.75rem; color:#475569; margin-bottom:8px;">📍 ${rest.address || ''}</p>
+            <a href="${gmapsLink}" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#ea4335; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; text-decoration:none; font-weight:bold;">
+              Öppna i Google Maps ↗
+            </a>
+          </div>
+        `);
+        mapMarkers.push(marker);
+      });
+    }
+
+    function renderRestaurants() {
+      const container = document.getElementById("restaurantsContainer");
+      if (!container) return;
+      container.innerHTML = "";
+
+      const filtered = getFilteredRestaurants();
+
+      if (filtered.length === 0) {
+        container.innerHTML = "<p style='color:var(--text-muted); padding:20px; text-align:center;'>Inga ställen matchar det valda filtret.</p>";
+        return;
+      }
+
+      filtered.forEach(rest => {
+        const div = document.createElement("div");
+        div.className = "restaurant-card";
+        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rest.name + ' ' + (rest.address || 'Sevilla'))}`;
+
+        let foodTagClass = "";
+        let foodTagLabel = rest.foodTag || "allt";
+        if (rest.foodTag === "kött") { foodTagClass = "tag-meat"; foodTagLabel = "🥩 Kött"; }
+        else if (rest.foodTag === "fisk") { foodTagClass = "tag-fish"; foodTagLabel = "🐟 Fisk"; }
+        else if (rest.foodTag === "jamon") { foodTagClass = "tag-jamon"; foodTagLabel = "🥓 Jamón"; }
+        else if (rest.foodTag === "vin") { foodTagClass = "tag-finedining"; foodTagLabel = "🍷 Vin"; }
+        else { foodTagLabel = "✨ Allt"; }
+
+        div.innerHTML = `
+          <div>
+            <h4 style="font-size:0.95rem;">${rest.name}</h4>
+            <div style="display:flex; gap:6px; margin:3px 0; flex-wrap:wrap;">
+              <span class="tag">📍 ${rest.neighborhood}</span>
+              <span class="tag">🏷️ ${rest.type}</span>
+              <span class="tag ${foodTagClass}">${foodTagLabel}</span>
+            </div>
+            <p style="font-size:0.8rem; color:var(--text-muted);">${rest.specialty}</p>
+            <p class="restaurant-addr">📍 ${rest.address || 'Sevilla'}</p>
+          </div>
+          <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="maps-link-btn">
+            🗺️ Maps
+          </a>
+        `;
+        container.appendChild(div);
+      });
+    }
+
     async function forceRefreshData() {
       const btn = document.getElementById("refreshBtn");
       if (btn) btn.innerText = "⏳ Hämtar...";
@@ -1018,7 +1178,6 @@
 
         tripData = await res.json();
         tripData.days.forEach(sortDayItems);
-        if (!tripData.todos) tripData.todos = DEFAULT_TODOS;
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(tripData));
         hasUnsavedChanges = false;
@@ -1063,19 +1222,13 @@
       const owner = document.getElementById("ghOwnerInput").value.trim();
       const repo = document.getElementById("ghRepoInput").value.trim();
       const token = document.getElementById("ghTokenInput").value.trim();
-      if (!owner || !repo || !token) {
-        alert("Fyll i alla fält!");
-        return;
-      }
+      if (!owner || !repo || !token) { alert("Fyll i alla fält!"); return; }
       localStorage.setItem("gh_owner", owner);
       localStorage.setItem("gh_repo", repo);
       localStorage.setItem("gh_token", token);
       closeGithubModal();
-      if (hasUnsavedChanges) {
-        saveToGitHub();
-      } else {
-        alert("GitHub-inställningar sparade!");
-      }
+      if (hasUnsavedChanges) saveToGitHub();
+      else alert("GitHub-inställningar sparade!");
     }
 
     function utf8ToBase64(str) {
@@ -1089,10 +1242,7 @@
       const repo = localStorage.getItem("gh_repo");
       const token = localStorage.getItem("gh_token");
 
-      if (!owner || !repo || !token) {
-        openGithubModal();
-        return;
-      }
+      if (!owner || !repo || !token) { openGithubModal(); return; }
 
       const btn = document.getElementById("saveBtnAction");
       const text = document.getElementById("saveBannerText");
@@ -1124,7 +1274,7 @@
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            message: "Uppdatera reseplan & TODOs",
+            message: "Uppdatera reseplan & restauranger",
             content: base64Content,
             sha: currentSha
           })
@@ -1136,9 +1286,7 @@
         text.innerText = "✅ Sparat till GitHub!";
         btn.innerText = "Klart!";
         setTimeout(() => {
-          if (!hasUnsavedChanges) {
-            document.getElementById("saveBanner").classList.remove("active");
-          }
+          if (!hasUnsavedChanges) document.getElementById("saveBanner").classList.remove("active");
         }, 3000);
 
       } catch (err) {
@@ -1155,7 +1303,6 @@
       if (localSaved) {
         tripData = JSON.parse(localSaved);
         tripData.days.forEach(sortDayItems);
-        if (!tripData.todos) tripData.todos = DEFAULT_TODOS;
         renderApp();
       } else {
         await forceRefreshData();
@@ -1179,9 +1326,7 @@
           const meta = CATEGORY_META[item.category] || CATEGORY_META.sight;
           const isPlaceholder = item.category === "placeholder";
           const isItemCollapsed = !!collapsedItemsState[item.id];
-          const gmapsUrl = item.address 
-            ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}`
-            : '';
+          const gmapsUrl = item.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}` : '';
 
           return `
             <div class="item-row ${item.completed ? 'completed' : ''} ${isPlaceholder ? 'is-placeholder' : ''} ${isItemCollapsed ? 'item-collapsed' : ''}" id="row-${item.id}">
@@ -1267,9 +1412,7 @@
     function updateItemField(dIdx, iIdx, field, value) {
       tripData.days[dIdx].items[iIdx][field] = value.trim();
       markUnsaved();
-      if (field === 'address' || field === 'link') {
-        renderSchedule();
-      }
+      if (field === 'address' || field === 'link') renderSchedule();
     }
 
     function deleteItem(dIdx, iIdx) {
@@ -1306,7 +1449,6 @@
     function renderNeighborhoods() {
       const container = document.getElementById("neighborhoodsContainer");
       container.innerHTML = "";
-
       const list = tripData.neighborhoods || [];
       list.forEach(n => {
         const div = document.createElement("div");
@@ -1318,64 +1460,6 @@
           </h4>
           <p style="font-size:0.8rem; font-weight:600; color:var(--primary); margin:4px 0;">${n.vibe}</p>
           <p style="font-size:0.85rem; color:var(--text-muted);">${n.desc}</p>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    function initMap() {
-      if (!tripData || !tripData.restaurants) return;
-      if (leafletMap) return;
-
-      leafletMap = L.map('mapContainer').setView([37.388, -5.996], 14);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(leafletMap);
-
-      tripData.restaurants.forEach(rest => {
-        if (!rest.lat || !rest.lng) return;
-
-        const isHotel = rest.type === 'Hotell';
-        const gmapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rest.name + ' ' + (rest.address || 'Sevilla'))}`;
-
-        const marker = L.marker([rest.lat, rest.lng]).addTo(leafletMap);
-        marker.bindPopup(`
-          <div style="font-family:sans-serif; min-width:180px;">
-            <strong style="font-size:0.95rem; color:#0f172a;">${isHotel ? '🏨 ' : '🥘 '}${rest.name}</strong><br>
-            <span style="font-size:0.75rem; color:#64748b;">${rest.type} • ${rest.neighborhood}</span><br>
-            <p style="font-size:0.8rem; margin:6px 0;">${rest.specialty || ''}</p>
-            <p style="font-size:0.75rem; color:#475569; margin-bottom:8px;">📍 ${rest.address || ''}</p>
-            <a href="${gmapsLink}" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#ea4335; color:#fff; padding:4px 8px; border-radius:4px; font-size:0.75rem; text-decoration:none; font-weight:bold;">
-              Öppna i Google Maps ↗
-            </a>
-          </div>
-        `);
-      });
-    }
-
-    function renderRestaurants() {
-      const container = document.getElementById("restaurantsContainer");
-      container.innerHTML = "";
-
-      tripData.restaurants.forEach(rest => {
-        const div = document.createElement("div");
-        div.className = "restaurant-card";
-        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rest.name + ' ' + (rest.address || 'Sevilla'))}`;
-
-        div.innerHTML = `
-          <div>
-            <h4 style="font-size:0.95rem;">${rest.name}</h4>
-            <div style="display:flex; gap:6px; margin:3px 0;">
-              <span class="tag">📍 ${rest.neighborhood}</span>
-              <span class="tag">🏷️ ${rest.type}</span>
-            </div>
-            <p style="font-size:0.8rem; color:var(--text-muted);">${rest.specialty}</p>
-            <p class="restaurant-addr">📍 ${rest.address || 'Sevilla'}</p>
-          </div>
-          <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="maps-link-btn">
-            🗺️ Maps
-          </a>
         `;
         container.appendChild(div);
       });

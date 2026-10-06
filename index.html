@@ -193,7 +193,7 @@
     .tab-pane { display: none; }
     .tab-pane.active { display: block; }
 
-    /* SNABBKONTROLLER FÖR ATT FÄLLA IN/UT */
+    /* SNABBKONTROLLER */
     .view-controls {
       display: flex;
       gap: 8px;
@@ -240,9 +240,7 @@
       cursor: pointer;
       user-select: none;
     }
-    .day-header:hover {
-      background: rgba(148, 163, 184, 0.12);
-    }
+    .day-header:hover { background: rgba(148, 163, 184, 0.12); }
     .day-header-left {
       display: flex;
       align-items: center;
@@ -269,17 +267,12 @@
     .city-badge.sevilla { background: var(--city-sevilla-bg); color: var(--city-sevilla); }
     .city-badge.cordoba { background: var(--city-cordoba-bg); color: var(--city-cordoba); }
 
-    /* NÄR DAGEN ÄR INFÄLLD */
     .day-card.day-collapsed .day-items-list,
     .day-card.day-collapsed .add-item-bar {
       display: none;
     }
-    .day-card.day-collapsed .day-fold-indicator {
-      transform: rotate(-90deg);
-    }
-    .day-card.day-collapsed {
-      margin-bottom: 0.65rem;
-    }
+    .day-card.day-collapsed .day-fold-indicator { transform: rotate(-90deg); }
+    .day-card.day-collapsed { margin-bottom: 0.65rem; }
 
     /* RAD-ITEMS */
     .day-items-list { display: flex; flex-direction: column; }
@@ -305,7 +298,6 @@
       font-style: italic;
     }
 
-    /* NÄR EN AKTIVITET ÄR INFÄLLD (HIGHLIGHT-LÄGE) */
     .item-row.item-collapsed {
       align-items: center;
       padding: 7px 14px;
@@ -329,9 +321,7 @@
       accent-color: var(--primary);
       cursor: pointer;
     }
-    .item-row.item-collapsed .item-checkbox {
-      margin-top: 0;
-    }
+    .item-row.item-collapsed .item-checkbox { margin-top: 0; }
 
     .cat-badge {
       display: inline-flex;
@@ -382,7 +372,6 @@
     .item-link-edit { color: var(--text-muted); outline: none; }
     .item-link-edit:empty::before { content: "+ Lägg till länk..."; opacity: 0.45; font-style: italic; cursor: text; }
 
-    /* KNAPPAR PÅ VARJE RAD: FÄLL IN OCH TA BORT */
     .item-fold-btn {
       background: none;
       border: none;
@@ -395,9 +384,7 @@
       transition: transform 0.2s ease, color 0.15s;
     }
     .item-fold-btn:hover { color: var(--primary); background: var(--surface-subtle); }
-    .item-row.item-collapsed .item-fold-btn {
-      transform: rotate(-90deg);
-    }
+    .item-row.item-collapsed .item-fold-btn { transform: rotate(-90deg); }
 
     .item-delete-btn {
       background: none; border: none; color: var(--text-muted);
@@ -434,6 +421,57 @@
       background: var(--surface); color: var(--text); cursor: pointer;
     }
     .btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* SEKTION: TODO / ATT GÖRA PÅ PLATS */
+    .todo-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 1.25rem;
+    }
+    .todo-add-form {
+      display: flex;
+      gap: 8px;
+    }
+    .todo-add-form input {
+      flex: 1;
+      padding: 8px 12px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+    .todo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      transition: opacity 0.2s;
+    }
+    .todo-row.completed {
+      opacity: 0.5;
+    }
+    .todo-row.completed .todo-text {
+      text-decoration: line-through;
+    }
+    .todo-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .todo-text {
+      flex: 1;
+      font-size: 0.92rem;
+      outline: none;
+      word-break: break-word;
+    }
 
     /* Karta & Restauranger */
     #mapContainer {
@@ -664,6 +702,7 @@
 
   <nav class="nav-tabs">
     <button class="tab-btn active" onclick="openTab('tab-schedule')">📅 Schema</button>
+    <button class="tab-btn" onclick="openTab('tab-todos')">✅ TODO</button>
     <button class="tab-btn" onclick="openTab('tab-restaurants')">📍 Karta & Mat</button>
     <button class="tab-btn" onclick="openTab('tab-neighborhoods')">🏛️ Kvarter</button>
     <button class="tab-btn" onclick="openTab('tab-docs')">📂 Biljetter</button>
@@ -681,7 +720,22 @@
       <div id="scheduleContainer">Laddar...</div>
     </div>
 
-    <!-- FLIK 2: KARTA & MAT -->
+    <!-- FLIK 2: TODO (ATT GÖRA PÅ PLATS) -->
+    <div id="tab-todos" class="tab-pane">
+      <div class="todo-panel">
+        <h3 style="font-size:0.95rem; margin-bottom:4px;">📝 Kom-ihåg på plats</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
+          Praktiska saker att fixa under resan. Bocka av när det är klart!
+        </p>
+        <div class="todo-add-form">
+          <input type="text" id="todoInput" placeholder="Lägg till kom-ihåg (t.ex. Köp vatten, be om kvitto)...">
+          <button class="btn btn-primary" onclick="addTodo()">+ Lägg till</button>
+        </div>
+      </div>
+      <div id="todosContainer"></div>
+    </div>
+
+    <!-- FLIK 3: KARTA & MAT -->
     <div id="tab-restaurants" class="tab-pane">
       <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:12px; margin-bottom:1rem;">
         <h3 style="font-size:0.95rem; margin-bottom:4px;">🗺️ Interaktiv Restaurang- & Platskarta</h3>
@@ -693,7 +747,7 @@
       <div id="restaurantsContainer"></div>
     </div>
 
-    <!-- FLIK 3: KVARTERSGUIDE -->
+    <!-- FLIK 4: KVARTERSGUIDE -->
     <div id="tab-neighborhoods" class="tab-pane">
       <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:12px; margin-bottom:1rem;">
         <h3 style="font-size:0.95rem; margin-bottom:4px;">Stadsdelar att strosa i</h3>
@@ -704,7 +758,7 @@
       <div id="neighborhoodsContainer"></div>
     </div>
 
-    <!-- FLIK 4: BILJETTER & DOKUMENT (GITHUB /files/) -->
+    <!-- FLIK 5: BILJETTER & DOKUMENT (GITHUB /files/) -->
     <div id="tab-docs" class="tab-pane">
       <div class="doc-add-panel">
         <h3 style="font-size:0.95rem; margin-bottom:4px;">📂 Spara biljetter från GitHub (/files/)</h3>
@@ -733,7 +787,7 @@
     <button class="save-banner-btn" onclick="saveToGitHub()" id="saveBtnAction">
       ☁️ Spara till GitHub
     </button>
-    <button class="save-banner-gear" onclick="openGithubModal()" title="Inställningar">⚙️</button>
+    <button class="save-banner-gear" onclick="openGithubModal()" title="Inställningar">⚙️️</button>
   </div>
 
   <!-- MODAL: GITHUB API INSTÄLLNINGAR -->
@@ -766,11 +820,16 @@
     let tripData = null;
     let leafletMap = null;
     let hasUnsavedChanges = false;
-    const STORAGE_KEY = "andalusien_trip_data_v10";
+    const STORAGE_KEY = "andalusien_trip_data_v11";
 
-    // Håller koll på vilka dagar och items som är infällda (sparas lokalt i UI-state)
     let collapsedDaysState = JSON.parse(localStorage.getItem("ui_collapsed_days") || "{}");
     let collapsedItemsState = JSON.parse(localStorage.getItem("ui_collapsed_items") || "{}");
+
+    // Standard-TODOs om inga sparats än
+    const DEFAULT_TODOS = [
+      { id: "todo-1", text: "Be hotellet (i Sevilla) att boka taxi till tåget till Málaga", done: false },
+      { id: "todo-2", text: "Fråga om frukostbag to-go inför resan Sevilla ➔ Málaga", done: false }
+    ];
 
     const DEFAULT_DOCS = [
       { id: "doc-1", title: "Tåg: Sevilla ➔ Málaga T/R", filename: "sevilla-malaga-train-tur-och-retur.pdf", color: "#0284c7" },
@@ -845,9 +904,7 @@
       day.items.sort((a, b) => getTimeWeight(a.time) - getTimeWeight(b.time));
     }
 
-    // FÄLL IN / UT EN HEL DAG
     function toggleDayCollapse(dayId, event) {
-      // Ignorera klick om man klickar i knappar eller badges
       if (event && (event.target.closest('.city-badge') || event.target.closest('button'))) return;
       collapsedDaysState[dayId] = !collapsedDaysState[dayId];
       localStorage.setItem("ui_collapsed_days", JSON.stringify(collapsedDaysState));
@@ -869,7 +926,6 @@
       renderSchedule();
     }
 
-    // FÄLL IN / UT EN ENSKILD AKTIVITET (HIGHLIGHTS-LÄGE)
     function toggleItemCollapse(itemId, event) {
       if (event) event.stopPropagation();
       collapsedItemsState[itemId] = !collapsedItemsState[itemId];
@@ -880,7 +936,6 @@
       }
     }
 
-    // SLÅ PÅ/AV KOMPAKT LÄGE (HIGHLIGHTS) FÖR ALLA AKTIVITETER
     function toggleAllItemsCollapse() {
       const anyExpanded = tripData.days.some(d => d.items.some(it => !collapsedItemsState[it.id]));
       tripData.days.forEach(d => {
@@ -892,7 +947,63 @@
       renderSchedule();
     }
 
-    // HÄMTA SENASTE DATA FRÅN GITHUB / SERVERN UTAN CACHE
+    // TODO HANTERING
+    function addTodo() {
+      const input = document.getElementById("todoInput");
+      const text = input.value.trim();
+      if (!text) return;
+      if (!tripData.todos) tripData.todos = [];
+      tripData.todos.push({
+        id: "todo-" + Date.now(),
+        text: text,
+        done: false
+      });
+      input.value = "";
+      markUnsaved();
+      renderTodos();
+    }
+
+    function toggleTodoDone(idx) {
+      tripData.todos[idx].done = !tripData.todos[idx].done;
+      markUnsaved();
+      renderTodos();
+    }
+
+    function updateTodoText(idx, text) {
+      tripData.todos[idx].text = text.trim();
+      markUnsaved();
+    }
+
+    function deleteTodo(idx) {
+      tripData.todos.splice(idx, 1);
+      markUnsaved();
+      renderTodos();
+    }
+
+    function renderTodos() {
+      const container = document.getElementById("todosContainer");
+      if (!container) return;
+      container.innerHTML = "";
+      const list = tripData.todos || [];
+
+      if (list.length === 0) {
+        container.innerHTML = "<p style='font-size:0.85rem; color:var(--text-muted); text-align:center; padding:20px;'>Inga TODO-punkter just nu. Lägg till ovan!</p>";
+        return;
+      }
+
+      list.forEach((item, idx) => {
+        const row = document.createElement("div");
+        row.className = `todo-row ${item.done ? 'completed' : ''}`;
+        row.innerHTML = `
+          <input type="checkbox" class="todo-checkbox" ${item.done ? 'checked' : ''} onchange="toggleTodoDone(${idx})">
+          <span class="todo-text" contenteditable="true" onblur="updateTodoText(${idx}, this.innerText)">${item.text}</span>
+          <button class="item-delete-btn" title="Ta bort" onclick="deleteTodo(${idx})">✕</button>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    // SYNKKONTROLLER & GITHUB
     async function forceRefreshData() {
       const btn = document.getElementById("refreshBtn");
       if (btn) btn.innerText = "⏳ Hämtar...";
@@ -907,6 +1018,7 @@
 
         tripData = await res.json();
         tripData.days.forEach(sortDayItems);
+        if (!tripData.todos) tripData.todos = DEFAULT_TODOS;
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(tripData));
         hasUnsavedChanges = false;
@@ -996,9 +1108,7 @@
           }
         });
 
-        if (!getRes.ok) {
-          throw new Error("Kunde inte hämta filen från GitHub. Kontrollera behörighet/reponamn.");
-        }
+        if (!getRes.ok) throw new Error("Kunde inte hämta filen från GitHub.");
 
         const getData = await getRes.json();
         const currentSha = getData.sha;
@@ -1014,15 +1124,13 @@
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            message: "Uppdatera reseplan (via Reseguide App)",
+            message: "Uppdatera reseplan & TODOs",
             content: base64Content,
             sha: currentSha
           })
         });
 
-        if (!putRes.ok) {
-          throw new Error("GitHub nekade sparningen. Kontrollera token-rättigheter.");
-        }
+        if (!putRes.ok) throw new Error("GitHub nekade sparningen.");
 
         hasUnsavedChanges = false;
         text.innerText = "✅ Sparat till GitHub!";
@@ -1047,6 +1155,7 @@
       if (localSaved) {
         tripData = JSON.parse(localSaved);
         tripData.days.forEach(sortDayItems);
+        if (!tripData.todos) tripData.todos = DEFAULT_TODOS;
         renderApp();
       } else {
         await forceRefreshData();
@@ -1102,9 +1211,7 @@
                 </div>
               </div>
 
-              <!-- KNAPP FÖR ATT FÄLLA IN/UT AKTIVITET -->
               <button class="item-fold-btn" title="Fäll in/ut detaljer för denna aktivitet" onclick="toggleItemCollapse('${item.id}', event)">▾</button>
-
               <button class="item-delete-btn" title="Ta bort" onclick="deleteItem(${dIdx}, ${iIdx})">✕</button>
             </div>
           `;
@@ -1371,6 +1478,7 @@
 
     function renderApp() {
       renderSchedule();
+      renderTodos();
       renderNeighborhoods();
       renderRestaurants();
       renderDocs();

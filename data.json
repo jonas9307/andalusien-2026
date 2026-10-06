@@ -321,12 +321,12 @@
         {
           "id": "d4-p1",
           "time": "10:30",
-          "title": "[Öppen slot: Förmiddagsaktivitet]",
+          "title": "FÖRSLAG: Plaza de España",
           "category": "placeholder",
-          "notes": "Förslag: Ro båt vid Plaza de España eller strosa i Maria Luisa-parken",
-          "address": "",
+          "notes": "Plaza de España. Man kan låna liten båt och ro om man vill",
+          "address": "Av. Isabel la Católica, 41004 Sevilla, Spanien",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d4-2",
@@ -341,12 +341,12 @@
         {
           "id": "d4-p2",
           "time": "15:30",
-          "title": "[Öppen slot: Pool / Ladda upp]",
+          "title": "FÖRSLAG: Bar Peña Bética de Triana. Supporterbar innan match.",
           "category": "placeholder",
-          "notes": "Vila på hotellet inför matchen",
-          "address": "",
+          "notes": "Det serveras ej starköl på arenan. Arenan ligger lite off, lite öl utomhus men ej mycket.",
+          "address": "Pelay Correa, 25, 41010 Sevilla, Spanien",
           "link": "",
-          "completed": true
+          "completed": false
         },
         {
           "id": "d4-3",

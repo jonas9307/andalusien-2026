@@ -155,9 +155,7 @@
       align-items: center;
       gap: 4px;
     }
-    .theme-toggle-btn:hover {
-      border-color: var(--primary);
-    }
+    .theme-toggle-btn:hover { border-color: var(--primary); }
 
     .nav-tabs {
       display: flex;
@@ -195,7 +193,30 @@
     .tab-pane { display: none; }
     .tab-pane.active { display: block; }
 
-    /* Dagskort */
+    /* SNABBKONTROLLER FÖR ATT FÄLLA IN/UT */
+    .view-controls {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .view-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .view-btn:hover { color: var(--text); border-color: var(--primary); }
+
+    /* DAGSKORT */
     .day-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -203,6 +224,7 @@
       margin-bottom: 1.25rem;
       overflow: hidden;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      transition: border-color 0.2s;
     }
     .day-card.city-malaga { border-top: 5px solid var(--city-malaga); }
     .day-card.city-sevilla { border-top: 5px solid var(--city-sevilla); }
@@ -215,6 +237,22 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+    }
+    .day-header:hover {
+      background: rgba(148, 163, 184, 0.12);
+    }
+    .day-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .day-fold-indicator {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+      display: inline-block;
     }
     .day-title { font-weight: 700; font-size: 1rem; }
     .day-sub { font-size: 0.75rem; color: var(--text-muted); }
@@ -231,27 +269,57 @@
     .city-badge.sevilla { background: var(--city-sevilla-bg); color: var(--city-sevilla); }
     .city-badge.cordoba { background: var(--city-cordoba-bg); color: var(--city-cordoba); }
 
-    /* Rad-items */
+    /* NÄR DAGEN ÄR INFÄLLD */
+    .day-card.day-collapsed .day-items-list,
+    .day-card.day-collapsed .add-item-bar {
+      display: none;
+    }
+    .day-card.day-collapsed .day-fold-indicator {
+      transform: rotate(-90deg);
+    }
+    .day-card.day-collapsed {
+      margin-bottom: 0.65rem;
+    }
+
+    /* RAD-ITEMS */
     .day-items-list { display: flex; flex-direction: column; }
     .item-row {
       display: grid;
-      grid-template-columns: auto auto 1fr auto;
+      grid-template-columns: auto auto 1fr auto auto;
       align-items: flex-start;
-      gap: 12px;
-      padding: 12px 14px;
+      gap: 10px;
+      padding: 11px 14px;
       border-bottom: 1px solid var(--border);
+      transition: background 0.1s;
     }
     .item-row:last-child { border-bottom: none; }
-    .item-row.completed { opacity: 0.5; }
+    .item-row.completed { opacity: 0.45; }
     .item-row.completed .item-title { text-decoration: line-through; }
 
     .item-row.is-placeholder {
-      background: rgba(148, 163, 184, 0.07);
+      background: rgba(148, 163, 184, 0.05);
       border-left: 3px dashed var(--text-muted);
     }
     .item-row.is-placeholder .item-title {
       color: var(--text-muted);
       font-style: italic;
+    }
+
+    /* NÄR EN AKTIVITET ÄR INFÄLLD (HIGHLIGHT-LÄGE) */
+    .item-row.item-collapsed {
+      align-items: center;
+      padding: 7px 14px;
+      background: rgba(241, 245, 249, 0.4);
+    }
+    .item-row.item-collapsed .item-notes,
+    .item-row.item-collapsed .item-address-row,
+    .item-row.item-collapsed .item-link-row {
+      display: none !important;
+    }
+    .item-row.item-collapsed .item-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .item-checkbox {
@@ -260,6 +328,9 @@
       margin-top: 5px;
       accent-color: var(--primary);
       cursor: pointer;
+    }
+    .item-row.item-collapsed .item-checkbox {
+      margin-top: 0;
     }
 
     .cat-badge {
@@ -273,6 +344,7 @@
       white-space: nowrap;
       margin-top: 2px;
     }
+    .item-row.item-collapsed .cat-badge { margin-top: 0; }
     .cat-badge span[contenteditable] { outline: none; min-width: 38px; cursor: text; }
     .cat-transport   { background: var(--cat-transport-bg); color: var(--cat-transport-text); }
     .cat-food        { background: var(--cat-food-bg); color: var(--cat-food-text); }
@@ -281,7 +353,7 @@
     .cat-chill       { background: var(--cat-chill-bg); color: var(--cat-chill-text); }
     .cat-placeholder { background: var(--cat-placeholder-bg); color: var(--cat-placeholder-text); border: 1px dashed var(--border); }
 
-    .item-details { display: flex; flex-direction: column; min-width: 0; gap: 4px; }
+    .item-details { display: flex; flex-direction: column; min-width: 0; gap: 3px; }
     .item-title { font-size: 0.92rem; font-weight: 600; outline: none; }
     
     .item-notes { font-size: 0.78rem; color: var(--text-muted); outline: none; min-height: 1.1em; }
@@ -310,9 +382,26 @@
     .item-link-edit { color: var(--text-muted); outline: none; }
     .item-link-edit:empty::before { content: "+ Lägg till länk..."; opacity: 0.45; font-style: italic; cursor: text; }
 
+    /* KNAPPAR PÅ VARJE RAD: FÄLL IN OCH TA BORT */
+    .item-fold-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 4px;
+      line-height: 1;
+      border-radius: 4px;
+      transition: transform 0.2s ease, color 0.15s;
+    }
+    .item-fold-btn:hover { color: var(--primary); background: var(--surface-subtle); }
+    .item-row.item-collapsed .item-fold-btn {
+      transform: rotate(-90deg);
+    }
+
     .item-delete-btn {
       background: none; border: none; color: var(--text-muted);
-      font-size: 1.1rem; cursor: pointer; padding: 4px;
+      font-size: 1.05rem; cursor: pointer; padding: 4px; line-height: 1;
     }
     .item-delete-btn:hover { color: var(--danger); }
 
@@ -567,7 +656,6 @@
       <p id="tripDates">Málaga, Sevilla & Córdoba • 8–15 Okt</p>
     </div>
     <div class="header-actions">
-      <!-- UPPDATERA-KNAPPEN SOM HÄMTAR SENASTE FRÅN MOLNET UTAN CACHE -->
       <button class="theme-toggle-btn" id="refreshBtn" onclick="forceRefreshData()" title="Hämta senaste versionen från GitHub">🔄 Uppdatera</button>
       <button class="theme-toggle-btn" onclick="openGithubModal()" title="GitHub Synkinställningar">☁️ Synk</button>
       <button class="theme-toggle-btn" onclick="cycleTheme()" id="themeBtn">🌓 Auto</button>
@@ -585,6 +673,11 @@
     
     <!-- FLIK 1: SCHEMA -->
     <div id="tab-schedule" class="tab-pane active">
+      <div class="view-controls">
+        <button class="view-btn" onclick="toggleAllItemsCollapse()">⚡ Highlights (Kompakt vy)</button>
+        <button class="view-btn" onclick="collapseAllDays()">⌃ Fäll ihop alla dagar</button>
+        <button class="view-btn" onclick="expandAllDays()">⌄ Fäll ut alla dagar</button>
+      </div>
       <div id="scheduleContainer">Laddar...</div>
     </div>
 
@@ -675,6 +768,10 @@
     let hasUnsavedChanges = false;
     const STORAGE_KEY = "andalusien_trip_data_v10";
 
+    // Håller koll på vilka dagar och items som är infällda (sparas lokalt i UI-state)
+    let collapsedDaysState = JSON.parse(localStorage.getItem("ui_collapsed_days") || "{}");
+    let collapsedItemsState = JSON.parse(localStorage.getItem("ui_collapsed_items") || "{}");
+
     const DEFAULT_DOCS = [
       { id: "doc-1", title: "Tåg: Sevilla ➔ Málaga T/R", filename: "sevilla-malaga-train-tur-och-retur.pdf", color: "#0284c7" },
       { id: "doc-2", title: "Tåg: Sevilla ➔ Córdoba T/R", filename: "sevilla-cordoba-train-tur-och-retur.pdf", color: "#0284c7" },
@@ -690,7 +787,7 @@
       food:        { label: "Mat & Dryck", icon: "🥘", class: "cat-food" },
       sight:       { label: "Sevärdhet", icon: "🏛", class: "cat-sight" },
       hotel:       { label: "Hotell", icon: "🏨", class: "cat-hotel" },
-      chill:       { label: "Relax", icon: "☀️️", class: "cat-chill" },
+      chill:       { label: "Relax", icon: "☀", class: "cat-chill" },
       placeholder: { label: "Öppet", icon: "⏳", class: "cat-placeholder" }
     };
 
@@ -699,7 +796,7 @@
       document.documentElement.setAttribute("data-theme", theme);
       const btn = document.getElementById("themeBtn");
       if (theme === "dark") btn.innerHTML = "🌙 Mörkt";
-      else if (theme === "light") btn.innerHTML = "☀️️ Ljust";
+      else if (theme === "light") btn.innerHTML = "☀ Ljust";
       else btn.innerHTML = "🌓 Auto";
       localStorage.setItem("theme_mode", theme);
     }
@@ -748,13 +845,59 @@
       day.items.sort((a, b) => getTimeWeight(a.time) - getTimeWeight(b.time));
     }
 
-    // TVINGAD HÄMTNING AV SENASTE DATA FRÅN GITHUB / SERVERN (Kringgår all cache)
+    // FÄLL IN / UT EN HEL DAG
+    function toggleDayCollapse(dayId, event) {
+      // Ignorera klick om man klickar i knappar eller badges
+      if (event && (event.target.closest('.city-badge') || event.target.closest('button'))) return;
+      collapsedDaysState[dayId] = !collapsedDaysState[dayId];
+      localStorage.setItem("ui_collapsed_days", JSON.stringify(collapsedDaysState));
+      const card = document.getElementById(`card-${dayId}`);
+      if (card) {
+        card.classList.toggle("day-collapsed", collapsedDaysState[dayId]);
+      }
+    }
+
+    function collapseAllDays() {
+      tripData.days.forEach(d => { collapsedDaysState[d.id] = true; });
+      localStorage.setItem("ui_collapsed_days", JSON.stringify(collapsedDaysState));
+      renderSchedule();
+    }
+
+    function expandAllDays() {
+      collapsedDaysState = {};
+      localStorage.setItem("ui_collapsed_days", JSON.stringify(collapsedDaysState));
+      renderSchedule();
+    }
+
+    // FÄLL IN / UT EN ENSKILD AKTIVITET (HIGHLIGHTS-LÄGE)
+    function toggleItemCollapse(itemId, event) {
+      if (event) event.stopPropagation();
+      collapsedItemsState[itemId] = !collapsedItemsState[itemId];
+      localStorage.setItem("ui_collapsed_items", JSON.stringify(collapsedItemsState));
+      const row = document.getElementById(`row-${itemId}`);
+      if (row) {
+        row.classList.toggle("item-collapsed", collapsedItemsState[itemId]);
+      }
+    }
+
+    // SLÅ PÅ/AV KOMPAKT LÄGE (HIGHLIGHTS) FÖR ALLA AKTIVITETER
+    function toggleAllItemsCollapse() {
+      const anyExpanded = tripData.days.some(d => d.items.some(it => !collapsedItemsState[it.id]));
+      tripData.days.forEach(d => {
+        d.items.forEach(it => {
+          collapsedItemsState[it.id] = anyExpanded;
+        });
+      });
+      localStorage.setItem("ui_collapsed_items", JSON.stringify(collapsedItemsState));
+      renderSchedule();
+    }
+
+    // HÄMTA SENASTE DATA FRÅN GITHUB / SERVERN UTAN CACHE
     async function forceRefreshData() {
       const btn = document.getElementById("refreshBtn");
       if (btn) btn.innerText = "⏳ Hämtar...";
 
       try {
-        // Tidsstämpel + no-store tvingar webbläsaren och GitHub Pages att skicka helt färsk data
         const res = await fetch("data.json?t=" + Date.now(), {
           cache: "no-store",
           headers: { "Cache-Control": "no-cache" }
@@ -765,7 +908,6 @@
         tripData = await res.json();
         tripData.days.forEach(sortDayItems);
 
-        // Skriver över mobilens gamla lokala minne
         localStorage.setItem(STORAGE_KEY, JSON.stringify(tripData));
         hasUnsavedChanges = false;
         document.getElementById("saveBanner").classList.remove("active");
@@ -782,7 +924,6 @@
       }
     }
 
-    // ÄNDRINGSHANTERING & MOLNSYNC
     function markUnsaved() {
       hasUnsavedChanges = true;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(tripData));
@@ -919,19 +1060,22 @@
       tripData.days.forEach((day, dIdx) => {
         const cityKey = getCityKey(day.city, dIdx);
         const cityName = getCityName(cityKey);
+        const isDayCollapsed = !!collapsedDaysState[day.id];
 
         const card = document.createElement("div");
-        card.className = `day-card city-${cityKey}`;
+        card.id = `card-${day.id}`;
+        card.className = `day-card city-${cityKey} ${isDayCollapsed ? 'day-collapsed' : ''}`;
         
         let itemsHtml = day.items.map((item, iIdx) => {
           const meta = CATEGORY_META[item.category] || CATEGORY_META.sight;
           const isPlaceholder = item.category === "placeholder";
+          const isItemCollapsed = !!collapsedItemsState[item.id];
           const gmapsUrl = item.address 
             ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}`
             : '';
 
           return `
-            <div class="item-row ${item.completed ? 'completed' : ''} ${isPlaceholder ? 'is-placeholder' : ''}">
+            <div class="item-row ${item.completed ? 'completed' : ''} ${isPlaceholder ? 'is-placeholder' : ''} ${isItemCollapsed ? 'item-collapsed' : ''}" id="row-${item.id}">
               <input type="checkbox" class="item-checkbox" ${item.completed ? 'checked' : ''} onchange="toggleItemDone(${dIdx}, ${iIdx})">
               
               <span class="cat-badge ${meta.class}" title="${meta.label}">
@@ -958,16 +1102,22 @@
                 </div>
               </div>
 
+              <!-- KNAPP FÖR ATT FÄLLA IN/UT AKTIVITET -->
+              <button class="item-fold-btn" title="Fäll in/ut detaljer för denna aktivitet" onclick="toggleItemCollapse('${item.id}', event)">▾</button>
+
               <button class="item-delete-btn" title="Ta bort" onclick="deleteItem(${dIdx}, ${iIdx})">✕</button>
             </div>
           `;
         }).join("");
 
         card.innerHTML = `
-          <div class="day-header">
-            <div>
-              <span class="day-title">${day.date}</span>
-              <div class="day-sub">${day.summary}</div>
+          <div class="day-header" onclick="toggleDayCollapse('${day.id}', event)">
+            <div class="day-header-left">
+              <span class="day-fold-indicator">▼</span>
+              <div>
+                <span class="day-title">${day.date}</span>
+                <div class="day-sub">${day.summary}</div>
+              </div>
             </div>
             <span class="city-badge ${cityKey}">📍 ${cityName}</span>
           </div>

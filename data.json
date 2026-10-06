@@ -195,7 +195,7 @@
         {
           "id": "d2-p3",
           "time": "19:15",
-          "title": "[Öppen slot: Tardeo / Fördrink efter turen]",
+          "title": "FRI LEK",
           "category": "placeholder",
           "notes": "Förslag: Ett glas vin eller öl vid Alameda eller Santa Cruz",
           "address": "",
@@ -204,10 +204,10 @@
         },
         {
           "id": "d2-6",
-          "time": "21:00",
-          "title": "MIDDAG (BOKA!)",
+          "time": "20:30",
+          "title": "MIDDAG",
           "category": "food",
-          "notes": "Högt fredagstryck – boka bord i förväg!",
+          "notes": "",
           "address": "",
           "link": "",
           "completed": true
@@ -295,7 +295,7 @@
           "time": "21:30",
           "title": "MIDDAG (BOKA!)",
           "category": "food",
-          "notes": "Lördagskväll – mycket folk ute",
+          "notes": "Vid barområdet \"Hercules de Alameda\" kanske? Pga lördag och folk ute?",
           "address": "",
           "link": "",
           "completed": true
@@ -370,10 +370,10 @@
         },
         {
           "id": "d4-4",
-          "time": "21:30",
-          "title": "MIDDAG: Galician Beef / Asador (BOKA!)",
+          "time": "21:00",
+          "title": "MIDDAG",
           "category": "food",
-          "notes": "Köttmiddag efter fotbollen (t.ex. Leña al Lomo el. Almansa)",
+          "notes": "",
           "address": "",
           "link": "",
           "completed": true
@@ -419,9 +419,9 @@
         {
           "id": "d5-4",
           "time": "12:30",
-          "title": "LUNCH i Córdoba (BOKA!)",
+          "title": "LUNCH i Córdoba",
           "category": "food",
-          "notes": "Nationaldag = knökfullt! Boka patio i Judería (prova salmorejo & flamenquín)",
+          "notes": "",
           "address": "",
           "link": "",
           "completed": true
@@ -459,9 +459,9 @@
         {
           "id": "d5-7",
           "time": "21:00",
-          "title": "MIDDAG i Triana / Sevilla (BOKA!)",
+          "title": "MIDDAG i / Sevilla",
           "category": "food",
-          "notes": "Nationaldagsstämning på gatorna",
+          "notes": "",
           "address": "",
           "link": "",
           "completed": true
@@ -537,9 +537,9 @@
         {
           "id": "d6-3",
           "time": "21:00",
-          "title": "MIDDAG (BOKA!)",
+          "title": "MIDDAG",
           "category": "food",
-          "notes": "Obs: Många traditionella tapasbarer stängda tisdagar!",
+          "notes": "",
           "address": "",
           "link": "",
           "completed": true
@@ -625,9 +625,9 @@
         {
           "id": "d7-4",
           "time": "20:30",
-          "title": "MIDDAG: Grillade espetos på strand-chiringuito",
+          "title": "MIDDAG",
           "category": "food",
-          "notes": "Sardiner grillade på spett över öppen eld vid stranden!",
+          "notes": "",
           "address": "",
           "link": "",
           "completed": true
@@ -663,9 +663,9 @@
         {
           "id": "d8-2",
           "time": "12:00",
-          "title": "Snabb tapas vid hamnen",
+          "title": "LUNCH - Köp något i matbutik att äta innan taxi till flyg",
           "category": "food",
-          "notes": "Enkelt och smidigt innan taxi",
+          "notes": "",
           "address": "",
           "link": "",
           "completed": true
@@ -951,7 +951,7 @@
       "foodTag": "allt",
       "address": "Calle Cuna, 45, 41004 Sevilla",
       "lat": 37.3925,
-      "lng": -5.9930,
+      "lng": -5.993,
       "specialty": "Modern andalusisk bistromat och omsorgsfull service"
     },
     {
